@@ -1,0 +1,4 @@
+services:
+#    uek_vod.example:
+#        class: Uek\VodBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

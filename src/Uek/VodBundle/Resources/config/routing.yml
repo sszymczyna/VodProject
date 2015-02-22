@@ -1,0 +1,3 @@
+uek_vod_homepage:
+    path:     /main
+    defaults: { _controller: UekVodBundle:Default:index }

@@ -17,8 +17,8 @@
       <parameter key="DoctrineBundle">Doctrine\Bundle\DoctrineBundle\DoctrineBundle</parameter>
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
       <parameter key="AppBundle">AppBundle\AppBundle</parameter>
+      <parameter key="UekVodBundle">Uek\VodBundle\UekVodBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
-      <parameter key="AcmeDemoBundle">Acme\DemoBundle\AcmeDemoBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
       <parameter key="SensioGeneratorBundle">Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle</parameter>
@@ -1654,14 +1654,6 @@
         </argument>
         <argument>0</argument>
       </call>
-      <call method="addListenerService">
-        <argument>kernel.controller</argument>
-        <argument type="collection">
-          <argument>acme.demo.listener</argument>
-          <argument>onKernelController</argument>
-        </argument>
-        <argument>0</argument>
-      </call>
       <call method="addSubscriberService">
         <argument>response_listener</argument>
         <argument>Symfony\Component\HttpKernel\EventListener\ResponseListener</argument>
@@ -2275,9 +2267,6 @@
         </argument>
       </call>
       <call method="addExtension">
-        <argument type="service" id="twig.extension.acme.demo"/>
-      </call>
-      <call method="addExtension">
         <argument type="service">
           <service class="Symfony\Bundle\WebProfilerBundle\Twig\WebProfilerExtension" public="false">
             <tag name="twig.extension"/>
@@ -2630,14 +2619,6 @@
         <argument>-1</argument>
       </call>
     </service>
-    <service id="twig.extension.acme.demo" class="Acme\DemoBundle\Twig\Extension\DemoExtension" public="false">
-      <tag name="twig.extension"/>
-      <argument type="service" id="twig.loader"/>
-    </service>
-    <service id="acme.demo.listener" class="Acme\DemoBundle\EventListener\ControllerListener">
-      <tag name="kernel.event_listener" event="kernel.controller" method="onKernelController"/>
-      <argument type="service" id="twig.extension.acme.demo"/>
-    </service>
     <service id="web_profiler.controller.profiler" class="Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController">
       <argument type="service" id="router" on-invalid="null"/>
       <argument type="service" id="profiler" on-invalid="null"/>
@@ -2976,12 +2957,12 @@
         <argument>Doctrine</argument>
       </call>
       <call method="addPath">
-        <argument>C:\xampp\htdocs\VodProject\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>
-        <argument>Debug</argument>
+        <argument>C:\xampp\htdocs\VodProject\src\Uek\VodBundle/Resources/views</argument>
+        <argument>UekVod</argument>
       </call>
       <call method="addPath">
-        <argument>C:\xampp\htdocs\VodProject\src\Acme\DemoBundle/Resources/views</argument>
-        <argument>AcmeDemo</argument>
+        <argument>C:\xampp\htdocs\VodProject\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>
+        <argument>Debug</argument>
       </call>
       <call method="addPath">
         <argument>C:\xampp\htdocs\VodProject\vendor\symfony\symfony\src\Symfony\Bundle\WebProfilerBundle/Resources/views</argument>

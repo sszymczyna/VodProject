@@ -1,3 +1,7 @@
+uek_vod:
+    resource: "@UekVodBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: @AppBundle/Controller/
     type:     annotation
