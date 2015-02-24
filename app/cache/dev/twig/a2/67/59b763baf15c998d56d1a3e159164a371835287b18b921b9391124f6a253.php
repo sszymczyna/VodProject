@@ -24,13 +24,7 @@ class __TwigTemplate_a26759b763baf15c998d56d1a3e159164a371835287b18b921b9391124f
         echo "\" >
         <button type=\"submit\">Pokaż zamówienia</button>
  </form>
-
-<form action=\"";
-        // line 7
-        echo $this->env->getExtension('routing')->getPath("login");
-        echo "\" >
-        <button type=\"submit\">Zaloguj</button>
- </form>";
+";
     }
 
     public function getTemplateName()
@@ -45,6 +39,6 @@ class __TwigTemplate_a26759b763baf15c998d56d1a3e159164a371835287b18b921b9391124f
 
     public function getDebugInfo()
     {
-        return array (  30 => 7,  23 => 3,  19 => 1,);
+        return array (  23 => 3,  19 => 1,);
     }
 }

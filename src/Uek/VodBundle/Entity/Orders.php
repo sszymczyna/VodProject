@@ -6,23 +6,35 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Orders
+ *
+ * @ORM\Table(name="orders")
+ * @ORM\Entity
  */
 class Orders
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="vod_order_id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $vodOrderId;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="vod_user_id", type="integer", nullable=false)
      */
     private $vodUserId;
 
     /**
      * @var integer
+     *
+     * @ORM\Column(name="vod_film_id", type="integer", nullable=false)
      */
     private $vodFilmId;
+
 
 
     /**

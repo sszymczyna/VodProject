@@ -30,7 +30,7 @@ class __TwigTemplate_e9946a0a8739d0e4d0cfefd445e269650f900d1ea855b561b6577c17237
          ";
         // line 7
         $this->displayBlock('body', $context, $blocks);
-        // line 20
+        // line 26
         echo "     </body>
  </html>";
     }
@@ -72,6 +72,18 @@ class __TwigTemplate_e9946a0a8739d0e4d0cfefd445e269650f900d1ea855b561b6577c17237
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 18
         echo "     </ul>
+ <form action=\"";
+        // line 19
+        echo $this->env->getExtension('routing')->getPath("uek_vod_homepage");
+        echo "\" >
+        <button type=\"submit\">Strona główna</button>
+ </form>
+ <form action=\"";
+        // line 22
+        echo $this->env->getExtension('routing')->getPath("logout");
+        echo "\" >
+        <button type=\"submit\">Wylogouj</button>
+ </form>
  ";
     }
 
@@ -82,6 +94,6 @@ class __TwigTemplate_e9946a0a8739d0e4d0cfefd445e269650f900d1ea855b561b6577c17237
 
     public function getDebugInfo()
     {
-        return array (  74 => 18,  63 => 13,  59 => 12,  56 => 11,  52 => 10,  48 => 8,  45 => 7,  39 => 4,  34 => 20,  32 => 7,  26 => 4,  21 => 1,);
+        return array (  83 => 22,  77 => 19,  74 => 18,  63 => 13,  59 => 12,  56 => 11,  52 => 10,  48 => 8,  45 => 7,  39 => 4,  34 => 26,  32 => 7,  26 => 4,  21 => 1,);
     }
 }

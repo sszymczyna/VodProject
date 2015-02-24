@@ -13,3 +13,7 @@ login:
 
 login_check:
     pattern: /login_check
+    
+logout:
+    pattern: /logout
+    defaults: {_controller: UekVodBundle:Security:logout }

@@ -35,4 +35,12 @@ class SecurityController extends Controller{
         );
         
     }
+    
+    public function logoutAction(){
+        $this->getUser()->setAuthenticated(false);
+
+        $this->getUser()->shutdown();
+
+        $this->redirect(`@homepage`);
+    }
 }

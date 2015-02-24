@@ -6,18 +6,31 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Users
+ *
+ * @ORM\Table(name="users")
+ * @ORM\Entity
  */
 class Users
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="vod_user_name", type="string", length=30, nullable=false)
      */
     private $vodUserName;
 
     /**
-     * @var \Uek\VodBundle\Entity\Orders
+     * @var \Orders
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Orders")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="vod_user_id", referencedColumnName="vod_order_id")
+     * })
      */
     private $vodUser;
+
 
 
     /**

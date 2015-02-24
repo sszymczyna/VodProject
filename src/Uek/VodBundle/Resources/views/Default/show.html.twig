@@ -16,6 +16,12 @@
          </li>
          {% endfor %}
      </ul>
+ <form action="{{ path('uek_vod_homepage') }}" >
+        <button type="submit">Strona główna</button>
+ </form>
+ <form action="{{ path('logout') }}" >
+        <button type="submit">Wylogouj</button>
+ </form>
  {% endblock %}
      </body>
  </html>

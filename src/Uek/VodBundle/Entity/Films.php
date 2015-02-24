@@ -6,18 +6,31 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Films
+ *
+ * @ORM\Table(name="films")
+ * @ORM\Entity
  */
 class Films
 {
     /**
      * @var string
+     *
+     * @ORM\Column(name="film_name", type="string", length=30, nullable=false)
      */
     private $filmName;
 
     /**
-     * @var \Uek\VodBundle\Entity\Orders
+     * @var \Orders
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Orders")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="film_id", referencedColumnName="vod_order_id")
+     * })
      */
     private $film;
+
 
 
     /**

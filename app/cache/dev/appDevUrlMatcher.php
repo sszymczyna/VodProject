@@ -151,9 +151,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'Uek\\VodBundle\\Controller\\SecurityController::loginAction',  '_route' => 'login',);
         }
 
-        // login_check
-        if ($pathinfo === '/login_check') {
-            return array('_route' => 'login_check');
+        if (0 === strpos($pathinfo, '/log')) {
+            // login_check
+            if ($pathinfo === '/login_check') {
+                return array('_route' => 'login_check');
+            }
+
+            // logout
+            if ($pathinfo === '/logout') {
+                return array (  '_controller' => 'Uek\\VodBundle\\Controller\\SecurityController::logoutAction',  '_route' => 'logout',);
+            }
+
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
