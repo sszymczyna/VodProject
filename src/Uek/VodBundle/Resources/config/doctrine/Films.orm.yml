@@ -1,0 +1,23 @@
+Uek\VodBundle\Entity\Films:
+    type: entity
+    table: films
+    id: {  }
+    fields:
+        filmName:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+            comment: ''
+            column: film_name
+    oneToOne:
+        film:
+            targetEntity: Orders
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                film_id:
+                    referencedColumnName: vod_order_id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

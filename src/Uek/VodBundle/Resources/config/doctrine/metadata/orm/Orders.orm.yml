@@ -1,0 +1,27 @@
+Orders:
+    type: entity
+    table: orders
+    id:
+        vodOrderId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: vod_order_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        vodUserId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: vod_user_id
+        vodFilmId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: vod_film_id
+    lifecycleCallbacks: {  }

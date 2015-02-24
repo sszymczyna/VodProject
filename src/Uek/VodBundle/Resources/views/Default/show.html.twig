@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+ <html>
+     <head>
+         <title>{% block title %}Default title{% endblock %}</title>
+     </head>
+     <body>
+         {% block body %}
+     <h1>List of orders</h1>
+     <ul>
+         {% for post in posts %}
+         <li>
+             {{post.vodOrderId}}
+             {{post.vodFilmId}}
+             
+             </a>
+         </li>
+         {% endfor %}
+     </ul>
+ {% endblock %}
+     </body>
+ </html>

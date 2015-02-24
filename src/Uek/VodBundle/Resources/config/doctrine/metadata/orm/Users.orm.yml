@@ -1,0 +1,23 @@
+Users:
+    type: entity
+    table: users
+    id: {  }
+    fields:
+        vodUserName:
+            type: string
+            nullable: false
+            length: 30
+            fixed: false
+            comment: ''
+            column: vod_user_name
+    oneToOne:
+        vodUser:
+            targetEntity: Orders
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                vod_user_id:
+                    referencedColumnName: vod_order_id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

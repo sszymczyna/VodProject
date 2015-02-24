@@ -5,3 +5,11 @@ uek_vod:
 app:
     resource: @AppBundle/Controller/
     type:     annotation
+  
+#routing for login controller
+login:
+    pattern: /show/login
+    defaults: {_controller: UekVodBundle:Security:login }
+
+login_check:
+    pattern: /login_check

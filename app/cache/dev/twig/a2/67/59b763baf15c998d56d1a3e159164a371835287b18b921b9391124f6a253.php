@@ -17,7 +17,20 @@ class __TwigTemplate_a26759b763baf15c998d56d1a3e159164a371835287b18b921b9391124f
     {
         // line 1
         echo "<h1>Witaj w wypożyczalni</h1>
-";
+
+<form action=\"";
+        // line 3
+        echo $this->env->getExtension('routing')->getPath("uek_vod_show_orders");
+        echo "\" >
+        <button type=\"submit\">Pokaż zamówienia</button>
+ </form>
+
+<form action=\"";
+        // line 7
+        echo $this->env->getExtension('routing')->getPath("login");
+        echo "\" >
+        <button type=\"submit\">Zaloguj</button>
+ </form>";
     }
 
     public function getTemplateName()
@@ -25,8 +38,13 @@ class __TwigTemplate_a26759b763baf15c998d56d1a3e159164a371835287b18b921b9391124f
         return "UekVodBundle:Default:index.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  19 => 1,);
+        return array (  30 => 7,  23 => 3,  19 => 1,);
     }
 }

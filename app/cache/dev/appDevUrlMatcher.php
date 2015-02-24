@@ -128,13 +128,32 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // uek_vod_homepage
-        if ($pathinfo === '/main') {
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'uek_vod_homepage');
+            }
+
             return array (  '_controller' => 'Uek\\VodBundle\\Controller\\DefaultController::indexAction',  '_route' => 'uek_vod_homepage',);
+        }
+
+        // uek_vod_show_orders
+        if ($pathinfo === '/show') {
+            return array (  '_controller' => 'Uek\\VodBundle\\Controller\\ShowOrdersController::indexAction',  '_route' => 'uek_vod_show_orders',);
         }
 
         // homepage
         if ($pathinfo === '/app/example') {
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
+        }
+
+        // login
+        if ($pathinfo === '/show/login') {
+            return array (  '_controller' => 'Uek\\VodBundle\\Controller\\SecurityController::loginAction',  '_route' => 'login',);
+        }
+
+        // login_check
+        if ($pathinfo === '/login_check') {
+            return array('_route' => 'login_check');
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

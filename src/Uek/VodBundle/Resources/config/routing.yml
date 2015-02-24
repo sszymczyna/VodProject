@@ -1,3 +1,7 @@
 uek_vod_homepage:
-    path:     /main
+    path:     /
     defaults: { _controller: UekVodBundle:Default:index }
+
+uek_vod_show_orders:
+    path:     /show
+    defaults: { _controller: UekVodBundle:ShowOrders:index }
