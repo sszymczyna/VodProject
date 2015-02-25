@@ -16,18 +16,20 @@ class ShowOrdersController extends Controller
         if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
         throw new AccessDeniedException();
     }
+    
+    $logUsrName = $this->get('security.context')->getToken()->getUser()->getUsername();
 $query = $this->getDoctrine()->getManager()->createQuery('
             SELECT u, p, c FROM UekVodBundle:Orders p
             JOIN p.films c
-            JOIN p.users u');
-#            WHERE p.id = :id'
-#        )->setParameter('id', 1);
+            JOIN p.users u
+            WHERE u.name = :name'
+        )->setParameter('name', $logUsrName);
  
     $orders = $query->getResult();
 
  #   $category = $product->getCategory();
     
-    echo $sf_user;
+    echo $this->get('security.context')->getToken()->getUser()->getUsername();
     if (!$orders) {
         throw $this->createNotFoundException(
             'No product found for id '
