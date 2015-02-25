@@ -1,81 +1,128 @@
 <?php
 
-namespace Uek\VodBundle\Entity;
+ namespace Uek\VodBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+ use Doctrine\ORM\Mapping as ORM;
+ use Doctrine\Common\Collections\ArrayCollection;
+ 
+ /**
+  * @ORM\Entity
+  * @ORM\Table(name="users")
+  */
+ class Users
+ {
+     /**
+      * @ORM\Id
+      * @ORM\Column(type="integer")
+      * @ORM\GeneratedValue(strategy="AUTO")
+      */
+     protected $id;
 
-/**
- * Users
- *
- * @ORM\Table(name="users")
- * @ORM\Entity
- */
-class Users
-{
+     /**
+      * @ORM\Column(type="string", length=100)
+      */
+     protected $name;
+
+       /**
+      * @ORM\Column(type="string", length=100)
+      */
+     protected $email;
+    
+     /**
+      * @ORM\OneToMany(targetEntity="Orders", mappedBy="users")
+      */
+     protected $orders;
+
+     public function __construct()
+     {
+         $this->orders = new ArrayCollection();
+     }
     /**
-     * @var string
+     * Get id
      *
-     * @ORM\Column(name="vod_user_name", type="string", length=30, nullable=false)
+     * @return integer 
      */
-    private $vodUserName;
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
-     * @var \Orders
+     * Set name
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Orders")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="vod_user_id", referencedColumnName="vod_order_id")
-     * })
-     */
-    private $vodUser;
-
-
-
-    /**
-     * Set vodUserName
-     *
-     * @param string $vodUserName
+     * @param string $name
      * @return Users
      */
-    public function setVodUserName($vodUserName)
+    public function setName($name)
     {
-        $this->vodUserName = $vodUserName;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get vodUserName
+     * Get name
      *
      * @return string 
      */
-    public function getVodUserName()
+    public function getName()
     {
-        return $this->vodUserName;
+        return $this->name;
     }
 
     /**
-     * Set vodUser
+     * Set email
      *
-     * @param \Uek\VodBundle\Entity\Orders $vodUser
+     * @param string $email
      * @return Users
      */
-    public function setVodUser(\Uek\VodBundle\Entity\Orders $vodUser = null)
+    public function setEmail($email)
     {
-        $this->vodUser = $vodUser;
+        $this->email = $email;
 
         return $this;
     }
 
     /**
-     * Get vodUser
+     * Get email
      *
-     * @return \Uek\VodBundle\Entity\Orders 
+     * @return string 
      */
-    public function getVodUser()
+    public function getEmail()
     {
-        return $this->vodUser;
+        return $this->email;
+    }
+
+    /**
+     * Add orders
+     *
+     * @param \Uek\VodBundle\Entity\Orders $orders
+     * @return Users
+     */
+    public function addOrder(\Uek\VodBundle\Entity\Orders $orders)
+    {
+        $this->orders[] = $orders;
+
+        return $this;
+    }
+
+    /**
+     * Remove orders
+     *
+     * @param \Uek\VodBundle\Entity\Orders $orders
+     */
+    public function removeOrder(\Uek\VodBundle\Entity\Orders $orders)
+    {
+        $this->orders->removeElement($orders);
+    }
+
+    /**
+     * Get orders
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOrders()
+    {
+        return $this->orders;
     }
 }

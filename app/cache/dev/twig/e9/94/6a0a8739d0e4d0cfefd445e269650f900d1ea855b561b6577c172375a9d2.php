@@ -30,7 +30,7 @@ class __TwigTemplate_e9946a0a8739d0e4d0cfefd445e269650f900d1ea855b561b6577c17237
          ";
         // line 7
         $this->displayBlock('body', $context, $blocks);
-        // line 26
+        // line 27
         echo "     </body>
  </html>";
     }
@@ -48,26 +48,42 @@ class __TwigTemplate_e9946a0a8739d0e4d0cfefd445e269650f900d1ea855b561b6577c17237
         echo "     <h1>List of orders</h1>
      <ul>
          ";
-        // line 11
-        echo "         <li>
+        // line 10
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["orders"]) ? $context["orders"] : $this->getContext($context, "orders")));
+        foreach ($context['_seq'] as $context["_key"] => $context["post"]) {
+            // line 11
+            echo "         <li>
              ";
-        // line 13
-        echo "             ";
-        // line 14
-        echo "             
+            // line 12
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["post"], "users", array()), "name", array()), "html", null, true);
+            echo "
+             ";
+            // line 13
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["post"], "films", array()), "name", array()), "html", null, true);
+            echo "
+             ";
+            // line 14
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["post"], "date", array()), "F jS \\a\\t g:ia"), "html", null, true);
+            echo "
+             
              </a>
          </li>
          ";
-        // line 18
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['post'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 19
         echo "     </ul>
  <form action=\"";
-        // line 19
+        // line 20
         echo $this->env->getExtension('routing')->getPath("uek_vod_homepage");
         echo "\" >
         <button type=\"submit\">Strona główna</button>
  </form>
  <form action=\"";
-        // line 22
+        // line 23
         echo $this->env->getExtension('routing')->getPath("logout");
         echo "\" >
         <button type=\"submit\">Wylogouj</button>
@@ -82,6 +98,6 @@ class __TwigTemplate_e9946a0a8739d0e4d0cfefd445e269650f900d1ea855b561b6577c17237
 
     public function getDebugInfo()
     {
-        return array (  71 => 22,  65 => 19,  62 => 18,  57 => 14,  55 => 13,  52 => 11,  48 => 8,  45 => 7,  39 => 4,  34 => 26,  32 => 7,  26 => 4,  21 => 1,);
+        return array (  87 => 23,  81 => 20,  78 => 19,  67 => 14,  63 => 13,  59 => 12,  56 => 11,  52 => 10,  48 => 8,  45 => 7,  39 => 4,  34 => 27,  32 => 7,  26 => 4,  21 => 1,);
     }
 }

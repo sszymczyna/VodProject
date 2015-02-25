@@ -1,95 +1,115 @@
 <?php
 
-namespace Uek\VodBundle\Entity;
+ namespace Uek\VodBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+ use Doctrine\ORM\Mapping as ORM;
 
-/**
- * Orders
- *
- * @ORM\Table(name="orders")
- * @ORM\Entity
- */
-class Orders
-{
+ /**
+  * @ORM\Entity
+  * @ORM\Table(name="orders")
+  */
+ class Orders
+ {
+     /**
+      * @ORM\Id
+      * @ORM\Column(type="integer")
+      * @ORM\GeneratedValue(strategy="AUTO")
+      */
+     protected $id;
+
+     /**
+      * @ORM\Column(type="datetime")
+      */
+     protected $date;
+  
+      /**
+      * @ORM\ManyToOne(targetEntity="Films", inversedBy="orders")
+      * @ORM\JoinColumn(name="films_id", referencedColumnName="id")
+      */
+     protected $films;
+     
+      /**
+      * @ORM\ManyToOne(targetEntity="Users", inversedBy="orders")
+      * @ORM\JoinColumn(name="users_id", referencedColumnName="id")
+      */
+     protected $users;     
+ 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="vod_order_id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $vodOrderId;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="vod_user_id", type="integer", nullable=false)
-     */
-    private $vodUserId;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="vod_film_id", type="integer", nullable=false)
-     */
-    private $vodFilmId;
-
-
-
-    /**
-     * Get vodOrderId
+     * Get id
      *
      * @return integer 
      */
-    public function getVodOrderId()
+    public function getId()
     {
-        return $this->vodOrderId;
+        return $this->id;
     }
 
     /**
-     * Set vodUserId
+     * Set date
      *
-     * @param integer $vodUserId
+     * @param \timedate $date
      * @return Orders
      */
-    public function setVodUserId($vodUserId)
+    public function setDate(\timedate $date)
     {
-        $this->vodUserId = $vodUserId;
+        $this->date = $date;
 
         return $this;
     }
 
     /**
-     * Get vodUserId
+     * Get date
      *
-     * @return integer 
+     * @return \timedate 
      */
-    public function getVodUserId()
+    public function getDate()
     {
-        return $this->vodUserId;
+        return $this->date;
     }
 
     /**
-     * Set vodFilmId
+     * Set films
      *
-     * @param integer $vodFilmId
+     * @param \Uek\VodBundle\Entity\Films $films
      * @return Orders
      */
-    public function setVodFilmId($vodFilmId)
+    public function setFilms(\Uek\VodBundle\Entity\Films $films = null)
     {
-        $this->vodFilmId = $vodFilmId;
+        $this->films = $films;
 
         return $this;
     }
 
     /**
-     * Get vodFilmId
+     * Get films
      *
-     * @return integer 
+     * @return \Uek\VodBundle\Entity\Films 
      */
-    public function getVodFilmId()
+    public function getFilms()
     {
-        return $this->vodFilmId;
+        return $this->films;
+    }
+
+    /**
+     * Set users
+     *
+     * @param \Uek\VodBundle\Entity\Users $users
+     * @return Orders
+     */
+    public function setUsers(\Uek\VodBundle\Entity\Users $users = null)
+    {
+        $this->users = $users;
+
+        return $this;
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Uek\VodBundle\Entity\Users 
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }

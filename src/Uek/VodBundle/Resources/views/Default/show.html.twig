@@ -7,14 +7,15 @@
          {% block body %}
      <h1>List of orders</h1>
      <ul>
-         {#% for post in posts %#}
+         {% for post in orders %}
          <li>
-             {#{post.vodOrderId}#}
-             {#{post.vodFilmId}#}
+             {{post.users.name}}
+             {{post.films.name}}
+             {{post.date|date("F jS \\a\\t g:ia")}}
              
              </a>
          </li>
-         {#% endfor %#}
+         {% endfor %}
      </ul>
  <form action="{{ path('uek_vod_homepage') }}" >
         <button type="submit">Strona główna</button>

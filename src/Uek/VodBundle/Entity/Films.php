@@ -1,81 +1,108 @@
 <?php
 
-namespace Uek\VodBundle\Entity;
+ namespace Uek\VodBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+ use Doctrine\ORM\Mapping as ORM;
+ use Doctrine\Common\Collections\ArrayCollection;
 
-/**
- * Films
- *
- * @ORM\Table(name="films")
- * @ORM\Entity
- */
-class Films
-{
+ /**
+  * @ORM\Entity
+  * @ORM\Table(name="films")
+  */
+ class Films
+ {
+     /**
+      * @ORM\Id
+      * @ORM\Column(type="integer")
+      * @ORM\GeneratedValue(strategy="AUTO")
+      */
+     protected $id;
+
+     /**
+      * @ORM\Column(type="string", length=100)
+      */
+     protected $name;
+
+     /**
+      * @ORM\OneToMany(targetEntity="Orders", mappedBy="films")
+      */
+     protected $orders;
+
+     public function __construct()
+     {
+         $this->orders = new ArrayCollection();
+     }
+ 
     /**
-     * @var string
+     * Get id
      *
-     * @ORM\Column(name="film_name", type="string", length=30, nullable=false)
+     * @return integer 
      */
-    private $filmName;
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
-     * @var \Orders
+     * Set name
      *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Orders")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="film_id", referencedColumnName="vod_order_id")
-     * })
-     */
-    private $film;
-
-
-
-    /**
-     * Set filmName
-     *
-     * @param string $filmName
+     * @param string $name
      * @return Films
      */
-    public function setFilmName($filmName)
+    public function setName($name)
     {
-        $this->filmName = $filmName;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get filmName
+     * Get name
      *
      * @return string 
      */
-    public function getFilmName()
+    public function getName()
     {
-        return $this->filmName;
+        return $this->name;
     }
 
     /**
-     * Set film
+     * Set email
      *
-     * @param \Uek\VodBundle\Entity\Orders $film
+     * @param string $email
      * @return Films
      */
-    public function setFilm(\Uek\VodBundle\Entity\Orders $film = null)
+
+    /**
+     * Add orders
+     *
+     * @param \Uek\VodBundle\Entity\Orders $orders
+     * @return Films
+     */
+    public function addOrder(\Uek\VodBundle\Entity\Orders $orders)
     {
-        $this->film = $film;
+        $this->orders[] = $orders;
 
         return $this;
     }
 
     /**
-     * Get film
+     * Remove orders
      *
-     * @return \Uek\VodBundle\Entity\Orders 
+     * @param \Uek\VodBundle\Entity\Orders $orders
      */
-    public function getFilm()
+    public function removeOrder(\Uek\VodBundle\Entity\Orders $orders)
     {
-        return $this->film;
+        $this->orders->removeElement($orders);
+    }
+
+    /**
+     * Get orders
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOrders()
+    {
+        return $this->orders;
     }
 }
