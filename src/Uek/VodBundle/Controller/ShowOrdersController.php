@@ -15,13 +15,13 @@ class ShowOrdersController extends Controller
         if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
         throw new AccessDeniedException();
     }
-         $posts = $this->get('doctrine')->getManager()
-            ->createQuery('SELECT o FROM UekVodBundle:Orders o WHERE o.vodUserId = 3')
-            ->execute();
+#         $posts = $this->get('doctrine')->getManager()
+#            ->createQuery('SELECT o FROM UekVodBundle:Orders o WHERE o.vodUserId = 3')
+#            ->execute();
 
         return $this->render(
-            'UekVodBundle:Default:show.html.twig',
-            array('posts' => $posts)
+            'UekVodBundle:Default:show.html.twig'
+#            array('posts' => $posts)
         );
     }
 }

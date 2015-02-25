@@ -48,28 +48,16 @@ class __TwigTemplate_e9946a0a8739d0e4d0cfefd445e269650f900d1ea855b561b6577c17237
         echo "     <h1>List of orders</h1>
      <ul>
          ";
-        // line 10
-        $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["posts"]) ? $context["posts"] : $this->getContext($context, "posts")));
-        foreach ($context['_seq'] as $context["_key"] => $context["post"]) {
-            // line 11
-            echo "         <li>
+        // line 11
+        echo "         <li>
              ";
-            // line 12
-            echo twig_escape_filter($this->env, $this->getAttribute($context["post"], "vodOrderId", array()), "html", null, true);
-            echo "
-             ";
-            // line 13
-            echo twig_escape_filter($this->env, $this->getAttribute($context["post"], "vodFilmId", array()), "html", null, true);
-            echo "
-             
+        // line 13
+        echo "             ";
+        // line 14
+        echo "             
              </a>
          </li>
          ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['post'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
         // line 18
         echo "     </ul>
  <form action=\"";
@@ -94,6 +82,6 @@ class __TwigTemplate_e9946a0a8739d0e4d0cfefd445e269650f900d1ea855b561b6577c17237
 
     public function getDebugInfo()
     {
-        return array (  83 => 22,  77 => 19,  74 => 18,  63 => 13,  59 => 12,  56 => 11,  52 => 10,  48 => 8,  45 => 7,  39 => 4,  34 => 26,  32 => 7,  26 => 4,  21 => 1,);
+        return array (  71 => 22,  65 => 19,  62 => 18,  57 => 14,  55 => 13,  52 => 11,  48 => 8,  45 => 7,  39 => 4,  34 => 26,  32 => 7,  26 => 4,  21 => 1,);
     }
 }
