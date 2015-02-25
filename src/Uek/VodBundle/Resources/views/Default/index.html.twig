@@ -1,5 +1,13 @@
-<h1>Witaj w wypożyczalni</h1>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
-<form action="{{ path('uek_vod_show_orders') }}" >
-        <button type="submit">Pokaż zamówienia</button>
- </form>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<div class="jumbotron">
+  <h1>Wypożyczalnia filmów VOD</h1>
+  <p><a class="btn btn-primary btn-lg" href="{{ path('uek_vod_show_orders') }}" role="button">Historia zamówień</a></p>
+</div>

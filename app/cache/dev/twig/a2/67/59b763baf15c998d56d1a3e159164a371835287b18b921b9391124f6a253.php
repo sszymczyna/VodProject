@@ -16,15 +16,22 @@ class __TwigTemplate_a26759b763baf15c998d56d1a3e159164a371835287b18b921b9391124f
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
-        echo "<h1>Witaj w wypożyczalni</h1>
+        echo "<!-- Latest compiled and minified CSS -->
+<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css\">
 
-<form action=\"";
-        // line 3
+<!-- Optional theme -->
+<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css\">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js\"></script>
+
+<div class=\"jumbotron\">
+  <h1>Wypożyczalnia filmów VOD</h1>
+  <p><a class=\"btn btn-primary btn-lg\" href=\"";
+        // line 12
         echo $this->env->getExtension('routing')->getPath("uek_vod_show_orders");
-        echo "\" >
-        <button type=\"submit\">Pokaż zamówienia</button>
- </form>
-";
+        echo "\" role=\"button\">Historia zamówień</a></p>
+</div>";
     }
 
     public function getTemplateName()
@@ -39,6 +46,6 @@ class __TwigTemplate_a26759b763baf15c998d56d1a3e159164a371835287b18b921b9391124f
 
     public function getDebugInfo()
     {
-        return array (  23 => 3,  19 => 1,);
+        return array (  32 => 12,  19 => 1,);
     }
 }

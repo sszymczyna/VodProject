@@ -31,7 +31,15 @@ class __TwigTemplate_e9946a0a8739d0e4d0cfefd445e269650f900d1ea855b561b6577c17237
         // line 7
         $this->displayBlock('body', $context, $blocks);
         // line 27
-        echo "     </body>
+        echo "     <div class=\"btn-group\">
+  <button class=\"btn btn-default btn-lg dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-expanded=\"false\">
+    Large button <span class=\"caret\"></span>
+  </button>
+  <ul class=\"dropdown-menu\" role=\"menu\">
+   
+  </ul>
+</div>
+     </body>
  </html>";
     }
 
@@ -98,6 +106,6 @@ class __TwigTemplate_e9946a0a8739d0e4d0cfefd445e269650f900d1ea855b561b6577c17237
 
     public function getDebugInfo()
     {
-        return array (  87 => 23,  81 => 20,  78 => 19,  67 => 14,  63 => 13,  59 => 12,  56 => 11,  52 => 10,  48 => 8,  45 => 7,  39 => 4,  34 => 27,  32 => 7,  26 => 4,  21 => 1,);
+        return array (  95 => 23,  89 => 20,  86 => 19,  75 => 14,  71 => 13,  67 => 12,  64 => 11,  60 => 10,  56 => 8,  53 => 7,  47 => 4,  34 => 27,  32 => 7,  26 => 4,  21 => 1,);
     }
 }
