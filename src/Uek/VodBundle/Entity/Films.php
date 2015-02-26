@@ -22,6 +22,33 @@
       * @ORM\Column(type="string", length=100)
       */
      protected $name;
+  
+     
+     /**
+      * @ORM\Column(type="string", length=100)
+      */
+     protected $actor1;   
+     
+     /**
+      * @ORM\Column(type="string", length=100)
+      */
+     protected $actor2;   
+     
+     /**
+     * @ORM\Column(type="decimal", scale = 2)
+     */
+    protected $price;
+    
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $available;
+    
+      /**
+      * @ORM\ManyToOne(targetEntity="Genres", inversedBy="films")
+      * @ORM\JoinColumn(name="genres_name", referencedColumnName="name")
+      */
+     protected $genres; 
 
      /**
       * @ORM\OneToMany(targetEntity="Orders", mappedBy="films")
@@ -32,7 +59,7 @@
      {
          $this->orders = new ArrayCollection();
      }
- 
+
     /**
      * Get id
      *
@@ -104,5 +131,143 @@
     public function getOrders()
     {
         return $this->orders;
+    }
+
+    /**
+     * Set genre
+     *
+     * @param string $genre
+     * @return Films
+     */
+    public function setGenre($genre)
+    {
+        $this->genre = $genre;
+
+        return $this;
+    }
+
+    /**
+     * Get genre
+     *
+     * @return string 
+     */
+    public function getGenre()
+    {
+        return $this->genre;
+    }
+
+    /**
+     * Set actor1
+     *
+     * @param string $actor1
+     * @return Films
+     */
+    public function setActor1($actor1)
+    {
+        $this->actor1 = $actor1;
+
+        return $this;
+    }
+
+    /**
+     * Get actor1
+     *
+     * @return string 
+     */
+    public function getActor1()
+    {
+        return $this->actor1;
+    }
+
+    /**
+     * Set actor2
+     *
+     * @param string $actor2
+     * @return Films
+     */
+    public function setActor2($actor2)
+    {
+        $this->actor2 = $actor2;
+
+        return $this;
+    }
+
+    /**
+     * Get actor2
+     *
+     * @return string 
+     */
+    public function getActor2()
+    {
+        return $this->actor2;
+    }
+
+    /**
+     * Set price
+     *
+     * @param string $price
+     * @return Films
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return string 
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set available
+     *
+     * @param boolean $available
+     * @return Films
+     */
+    public function setAvailable($available)
+    {
+        $this->available = $available;
+
+        return $this;
+    }
+
+    /**
+     * Get available
+     *
+     * @return boolean 
+     */
+    public function getAvailable()
+    {
+        return $this->available;
+    }
+
+    /**
+     * Set genres
+     *
+     * @param \Uek\VodBundle\Entity\Genres $genres
+     * @return Films
+     */
+    public function setGenres(\Uek\VodBundle\Entity\Genres $genres = null)
+    {
+        $this->genres = $genres;
+
+        return $this;
+    }
+
+    /**
+     * Get genres
+     *
+     * @return \Uek\VodBundle\Entity\Genres 
+     */
+    public function getGenres()
+    {
+        return $this->genres;
     }
 }
