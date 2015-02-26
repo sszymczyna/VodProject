@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<html>
+	<head>
+		<meta charset="UTF-8">
+        </head>
+	<body>
+		<div class="container">
+			<header class="row">
+				<div class="jumbotron">
+					{% block header %}
+					{% endblock %}
+				</div>
+			</header>
+			
+			<div class="row">
+				<div class="col-md-4">
+					{% block AvailableFilms %}
+					{% endblock %}
+				</div>
+			</div>
+			<footer class="row">
+				<p>(c) Sebastian Szymczyna</p>
+			</footer>
+		</div>
+	</body>
+</html>

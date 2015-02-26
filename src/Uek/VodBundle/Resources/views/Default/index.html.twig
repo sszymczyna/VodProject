@@ -1,13 +1,19 @@
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+{% extends "UekVodBundle::layout.html.twig" %}
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+{% block header %}
+	<h1>Wypożyczalnia filmów VOD</h1>
+        <p><a class="btn btn-primary btn-lg" href="{{ path('uek_vod_show_orders') }}" role="button">Historia zamówień</a></p>
+{% endblock %}
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-<div class="jumbotron">
-  <h1>Wypożyczalnia filmów VOD</h1>
-  <p><a class="btn btn-primary btn-lg" href="{{ path('uek_vod_show_orders') }}" role="button">Historia zamówień</a></p>
-</div>
+{% block AvailableFilms %}
+	<h1>Dostępne filmy</h1>
+            <ul>
+         {% for film in available %}
+         <li>
+             {{film.name}}
+            
+             </a>
+         </li>
+         {% endfor %}
+     </ul>		
+{% endblock %}

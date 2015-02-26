@@ -4,4 +4,4 @@ uek_vod_homepage:
 
 uek_vod_show_orders:
     path:     /show
-    defaults: { _controller: UekVodBundle:ShowOrders:index }
+    defaults: { _controller: UekVodBundle:DatabaseQuery:show }
