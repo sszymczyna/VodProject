@@ -54,6 +54,11 @@
       * @ORM\OneToMany(targetEntity="Orders", mappedBy="films")
       */
      protected $orders;
+     
+     /**
+      * @ORM\OneToMany(targetEntity="Reviews", mappedBy="films")
+      */
+     protected $reviews;
 
      public function __construct()
      {
@@ -269,5 +274,38 @@
     public function getGenres()
     {
         return $this->genres;
+    }
+
+    /**
+     * Add reviews
+     *
+     * @param \Uek\VodBundle\Entity\Reviews $reviews
+     * @return Films
+     */
+    public function addReview(\Uek\VodBundle\Entity\Reviews $reviews)
+    {
+        $this->reviews[] = $reviews;
+
+        return $this;
+    }
+
+    /**
+     * Remove reviews
+     *
+     * @param \Uek\VodBundle\Entity\Reviews $reviews
+     */
+    public function removeReview(\Uek\VodBundle\Entity\Reviews $reviews)
+    {
+        $this->reviews->removeElement($reviews);
+    }
+
+    /**
+     * Get reviews
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getReviews()
+    {
+        return $this->reviews;
     }
 }

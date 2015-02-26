@@ -5,15 +5,56 @@
         <p><a class="btn btn-primary btn-lg" href="{{ path('uek_vod_show_orders') }}" role="button">Historia zamówień</a></p>
 {% endblock %}
 
-{% block AvailableFilms %}
-	<h1>Dostępne filmy</h1>
+ {% block AvailableFilms %}
+	<h1>Dostępne filmy:<h1>
             <ul>
-         {% for film in available %}
+         {% for film in popular %}
          <li>
              {{film.name}}
-            
+              </a>
+         </li>
+         {% endfor %}
+     </ul>		
+{% endblock %}
+        
+ {% block PopularFilms %}
+	<h1>Najbardziej popularne filmy:<h1>
+            <ul>
+         {% for film in popular %}
+         <li>
+             {{film.name}}
+             {{film.num}}
+                         
              </a>
          </li>
          {% endfor %}
      </ul>		
 {% endblock %}
+                
+ {% block ReviewFilms %}
+	<h1>Najwięcej recencji:<h1>
+            <ul>
+         {% for film in review %}
+         <li>
+             {{film.name}}
+             {{film.num}}
+                         
+             </a>
+         </li>
+         {% endfor %}
+     </ul>		
+{% endblock %}
+                
+ {% block Genre %}
+	<h1>Gatunki:<h1>
+            <ul>
+         {% for film in genre %}
+         <li>
+             {{film.name}}
+                         
+             </a>
+         </li>
+         {% endfor %}
+     </ul>		
+{% endblock %}
+        
