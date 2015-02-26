@@ -25,15 +25,29 @@
 					{% block AvailableFilms %}
 					{% endblock %}
 				</div>
-			</div>
-                    
+                            				
+			           
+				<div class="col-md-8">
+					{% block content %}
+						{% block fos_user_content %}
+						{% endblock %}
+					{% endblock %}
+				</div>   
+                        </div>
                         <div class="row">
-				<div class="col-md-4">
-					{% block PopularFilms %}
+                                <div class="col-md-4">
+					{% block Genre %}
 					{% endblock %}
 				</div>
 			</div>
                     
+                        <div class="row">
+                                <div class="col-md-4">
+					{% block PopularFilms %}
+					{% endblock %}
+				</div>
+			</div>
+
                         <div class="row">
 				<div class="col-md-4">
 					{% block ReviewFilms %}
@@ -41,12 +55,6 @@
 				</div>
 			</div>
                     
-                        <div class="row">
-				<div class="col-md-4">
-					{% block Genre %}
-					{% endblock %}
-				</div>
-			</div>                    
 			<footer class="row">
 				<p>(c) Sebastian Szymczyna</p>
 			</footer>

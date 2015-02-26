@@ -11,16 +11,17 @@ class DefaultController extends Controller
     {
         $query = $this->getDoctrine()->getManager()->createQuery('
             SELECT f, g FROM UekVodBundle:Films f
-            JOIN f.genres g
-            WHERE f.available=1');
+            JOIN f.genres g 
+            WHERE f.available=1
+            ORDER BY f.name');
          $available = $query->getResult();
          
          $query = $this->getDoctrine()->getManager()->createQuery('
-             SELECT f.name,COUNT(o.id) AS num FROM UekVodBundle:Films f JOIN f.orders o GROUP BY f.id');
+             SELECT f.name,COUNT(o.id) AS num FROM UekVodBundle:Films f JOIN f.orders o GROUP BY f.id ORDER BY num DESC');
          $popular = $query->getResult();
          
          $query = $this->getDoctrine()->getManager()->createQuery('
-             SELECT f.name,COUNT(r.id) AS num FROM UekVodBundle:Films f JOIN f.reviews r GROUP BY f.id');
+             SELECT f.name,COUNT(r.id) AS num FROM UekVodBundle:Films f JOIN f.reviews r GROUP BY f.id ORDER BY num DESC');
          
          $review = $query->getResult();
          
@@ -31,5 +32,18 @@ class DefaultController extends Controller
          
         return $this->render('UekVodBundle:Default:index.html.twig',
              array('available' => $available, 'popular' => $popular, 'review' => $review, 'genre' => $genre));
+    }
+    
+    public function genresAction($genre)
+    {
+        $query = $this->getDoctrine()->getManager()->createQuery('
+            SELECT f, g FROM UekVodBundle:Films f
+            JOIN f.genres g 
+            WHERE g.name= :name
+            ORDER BY f.name');
+         $query->setParameter('name', $genre);
+         $genre = $query->getResult(); 
+         
+        return $this->render('UekVodBundle:Default:genre.html.twig', array('genre' => $genre));
     }
 }

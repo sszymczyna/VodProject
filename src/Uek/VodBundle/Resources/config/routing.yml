@@ -5,3 +5,7 @@ uek_vod_homepage:
 uek_vod_show_orders:
     path:     /show
     defaults: { _controller: UekVodBundle:DatabaseQuery:show }
+    
+film_genre:
+    path:     /gatunek/{genre}
+    defaults: { _controller: UekVodBundle:Default:genres }

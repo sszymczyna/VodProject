@@ -1,0 +1,16 @@
+{% extends "UekVodBundle::information.html.twig" %}
+
+{% block header %}
+  <h1>GATUNEK</h1>
+{% endblock %}
+  
+  {% block content %}
+	<h2>Wybrane filmy:</h2>
+
+               {% for film in genre %}
+ 
+             {{film.name}}
+
+         {% endfor %}
+	
+{% endblock %}

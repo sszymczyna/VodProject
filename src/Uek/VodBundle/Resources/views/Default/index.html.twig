@@ -6,55 +6,59 @@
 {% endblock %}
 
  {% block AvailableFilms %}
-	<h1>Dostępne filmy:<h1>
-            <ul>
-         {% for film in popular %}
-         <li>
+
+	<h2>Dostępne filmy:</h2>
+           <ul class="list-group">
+               {% for film in available %}
+            <li class="list-group-item">
+            <span class="badge"></span>
              {{film.name}}
-              </a>
-         </li>
+            </li>
+      
+         {% endfor %}
+     </ul>		
+{% endblock %}		
+
+ {% block content %}
+        <h1>test</h1>
+ {% endblock %}
+ 
+  {% block PopularFilms %}
+	<h2>Najbardziej popularne filmy:</h2>
+           <ul class="list-group">
+               {% for film in popular %}
+            <li class="list-group-item">
+            <span class="badge">{{film.num}}</span>
+             {{film.name}}
+            </li>
+        
          {% endfor %}
      </ul>		
 {% endblock %}
         
- {% block PopularFilms %}
-	<h1>Najbardziej popularne filmy:<h1>
-            <ul>
-         {% for film in popular %}
-         <li>
-             {{film.name}}
-             {{film.num}}
-                         
-             </a>
-         </li>
-         {% endfor %}
-     </ul>		
-{% endblock %}
-                
  {% block ReviewFilms %}
-	<h1>Najwięcej recencji:<h1>
-            <ul>
-         {% for film in review %}
-         <li>
+	<h2>Najwięcej recenzji:</h2>
+           <ul class="list-group">
+               {% for film in review %}
+            <li class="list-group-item">
+            <span class="badge">{{film.num}}</span>
              {{film.name}}
-             {{film.num}}
-                         
-             </a>
-         </li>
+            </li>
+   
          {% endfor %}
      </ul>		
 {% endblock %}
-                
+
+        
  {% block Genre %}
-	<h1>Gatunki:<h1>
-            <ul>
+  <div class="list-group">
+	<h2>Gatunki:</h2>
+
          {% for film in genre %}
-         <li>
-             {{film.name}}
-                         
-             </a>
-         </li>
-         {% endfor %}
-     </ul>		
+
+             <a href="{{path('film_genre',{'genre': film.name})}}" class="list-group-item">{{film.name}}</a>
+
+         {% endfor %}	
+   </div>
 {% endblock %}
         
