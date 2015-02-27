@@ -4,19 +4,22 @@
 	<h1>Wypożyczalnia filmów VOD</h1>
         <p><a class="btn btn-primary btn-lg" href="{{ path('uek_vod_show_orders') }}" role="button">Historia zamówień</a></p>
 {% endblock %}
-
+        
  {% block AvailableFilms %}
-
+      
 	<h2>Dostępne filmy:</h2>
-           <ul class="list-group">
+
                {% for film in available %}
-            <li class="list-group-item">
-            <span class="badge"></span>
+  
+                <a href="#" class="list-group-item">
+                <span class="badge">
+                </span>
              {{film.name}}
-            </li>
+                </a>
+
       
          {% endfor %}
-     </ul>		
+
 {% endblock %}		
 
  {% block content %}
@@ -25,28 +28,29 @@
  
   {% block PopularFilms %}
 	<h2>Najbardziej popularne filmy:</h2>
-           <ul class="list-group">
+
                {% for film in popular %}
-            <li class="list-group-item">
+                <a href="#" class="list-group-item">
             <span class="badge">{{film.num}}</span>
-             {{film.name}}
+             {{film.name}}                
+                </a>
             </li>
         
          {% endfor %}
-     </ul>		
+	
 {% endblock %}
         
  {% block ReviewFilms %}
 	<h2>Najwięcej recenzji:</h2>
-           <ul class="list-group">
+
                {% for film in review %}
-            <li class="list-group-item">
+                <a href="#" class="list-group-item">
             <span class="badge">{{film.num}}</span>
              {{film.name}}
-            </li>
+            </a>
    
          {% endfor %}
-     </ul>		
+	
 {% endblock %}
 
         
