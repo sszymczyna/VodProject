@@ -47,8 +47,14 @@
     /**
      * @ORM\Column(type="blob")
      */
-    protected $cover;
     
+    protected $cover;
+ 
+    /**
+     * @ORM\Column (type="text")
+     */
+    
+    protected $description; 
       /**
       * @ORM\ManyToOne(targetEntity="Genres", inversedBy="films")
       * @ORM\JoinColumn(name="genres_name", referencedColumnName="name")
@@ -65,6 +71,7 @@
       */
      protected $reviews;
 
+     
      public function __construct()
      {
          $this->orders = new ArrayCollection();
@@ -335,5 +342,28 @@
     public function getCover()
     {
         return $this->cover;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Films
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }

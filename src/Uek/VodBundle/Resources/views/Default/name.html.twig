@@ -7,10 +7,17 @@
   {% block content %}
 	<h2>Wybrane filmy:</h2>
 
-               {% for film in name %}
- 
-             {{film.name}}
-
+               
+        {% for film in name %}
+             {{film.name}}<br>
+             {{film.description}}<br>
+        <img src="{{asset('bundles/uekvod/images/'~ film.name ~'.jpg')}}" class="img-thumbnail"><br>
+             {{film.actor1}}<br>
+             {{film.actor2}}<br><br>
+         {% endfor %}
+         {% for reviews in review %}
+             <h3>{{reviews.date|date("F jS \\a\\t g:ia")}}<br><br></h3>
+             {{reviews.description}}<br><br>
          {% endfor %}
 	
 {% endblock %}

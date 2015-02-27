@@ -56,6 +56,14 @@ class DefaultController extends Controller
          $query->setParameter('id', $id);
          $name = $query->getResult(); 
          
-        return $this->render('UekVodBundle:Default:name.html.twig', array('name' => $name));
+          $query = $this->getDoctrine()->getManager()->createQuery('
+            SELECT r,f FROM UekVodBundle:Reviews r
+            JOIN r.films f
+            WHERE f.id= :id
+            ORDER BY r.date');
+         $query->setParameter('id', $id);
+         $review = $query->getResult();        
+         
+        return $this->render('UekVodBundle:Default:name.html.twig', array('name' => $name, 'review' => $review));
     }
 }
