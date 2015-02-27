@@ -2,7 +2,7 @@
 
 {% block header %}
 	<h1>Wypożyczalnia filmów VOD</h1>
-        <p><a class="btn btn-primary btn-lg" href="{{ path('uek_vod_show_orders') }}" role="button">Historia zamówień</a></p>
+        <p><a class="btn btn-primary btn-lg" href="{{ path('uek_vod_show_orders') }}" role="button">Przejdź do zalogowania</a></p>
 {% endblock %}
         
  {% block AvailableFilms %}
@@ -30,13 +30,13 @@
   {% block PopularFilms %}
 	<h2>Najbardziej popularne filmy:</h2>
 
-               {% for film in popular %}
+               {% for film in popular %}                      
                 <a href="{{path('film_name',{'id': film.id})}}" class="list-group-item">
             <span class="badge">{{film.num}}</span>
              {{film.name}}                
                 </a>
             </li>
-        
+
          {% endfor %}
 	
 {% endblock %}

@@ -1,15 +1,20 @@
 {% extends "UekVodBundle::information.html.twig" %}
 
-{% block header %}
-  <h1>GATUNEK</h1>
+
+{% block header %}<a href="{{path('uek_vod_homepage')}}" class="list-group-item">
+  <h1>Strona główna</h1></a>
 {% endblock %}
+
   
   {% block content %}
-	<h2>Wybrane filmy:</h2>
+	<h2>Wybrany film:</h2>
 
                
         {% for film in name %}
-             {{film.name}}<br>
+        <h3>{{film.name}}</h3><br>
+        
+        <p><a class="btn btn-primary btn-lg" href="" role="button">Wypożycz</a></p>
+        Cena: {{film.price}} <br><br>
              {{film.description}}<br>
         <img src="{{asset('bundles/uekvod/images/'~ film.name ~'.jpg')}}" class="img-thumbnail"><br>
              {{film.actor1}}<br>
