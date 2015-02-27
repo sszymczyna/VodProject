@@ -1,15 +1,21 @@
-<!DOCTYPE html>
+{% extends "UekVodBundle::information.html.twig" %}
+
+{% block header %}<a href="{{path('uek_vod_homepage')}}" class="list-group-item">
+  <h1>Strona główna</h1></a>
+{% endblock %}
+
+{% block content %}
  <html>
      <head>
-         <title>{% block title %}Default title{% endblock %}</title>
+        {# <title>{% block title %}Default title{% endblock %}</title>#}
      </head>
      <body>
-         {% block body %}
+         
      <h1>List of orders</h1>
      <ul>
          {% for post in orders %}
          <li>
-             {{post.users.name}}
+   
              {{post.films.name}}
              {{post.date|date("F jS \\a\\t g:ia")}}
              
@@ -17,20 +23,9 @@
          </li>
          {% endfor %}
      </ul>
- <form action="{{ path('uek_vod_homepage') }}" >
-        <button type="submit">Strona główna</button>
- </form>
- <form action="{{ path('logout') }}" >
-        <button type="submit">Wylogouj</button>
- </form>
- {% endblock %}
-     <div class="btn-group">
-  <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-    Large button <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-   
-  </ul>
-</div>
+
      </body>
  </html>
+ 
+ 
+ {% endblock %}

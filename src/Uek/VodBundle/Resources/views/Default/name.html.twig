@@ -12,8 +12,12 @@
                
         {% for film in name %}
         <h3>{{film.name}}</h3><br>
-        
-        <p><a class="btn btn-primary btn-lg" href="" role="button">Wypożycz</a></p>
+ 
+        <p><a class="btn btn-primary btn-lg" href="" role="button">Wypożycz</a>
+        {% if is_granted('ROLE_USER') %}
+        <a class="btn btn-primary btn-lg" href="" role="button">Dodaj recenzje</a>
+        {% endif %}
+        </p>
         Cena: {{film.price}} <br><br>
              {{film.description}}<br>
         <img src="{{asset('bundles/uekvod/images/'~ film.name ~'.jpg')}}" class="img-thumbnail"><br>

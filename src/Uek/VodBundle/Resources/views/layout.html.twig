@@ -11,13 +11,28 @@
 	<head>
 		<meta charset="UTF-8">
         </head>
+        
+        	
 	<body>
 		<div class="container">
 			<header class="row">
 				<div class="jumbotron">
 					{% block header %}
 					{% endblock %}
+                                                    {% if is_granted('ROLE_USER') %}
+                                                    <p>
+                                                    Witaj {{app.user.username}}! 
+                                                    <a href="{{path('uek_vod_show_orders')}}" class="btn btn-primary">Historia zamówień</a>
+                                                    <a href="{{path('logout')}}" class="btn btn-primary">Wyloguj</a>
+					</p>
 				</div>
+			{% else %}
+				<p>
+                                         <p><a class="btn btn-primary btn-lg" href="{{ path('login') }}" role="button">Zaloguj</a></p>
+
+				</p>
+			{% endif %}
+	
 			</header>
 			
 			<div class="row">

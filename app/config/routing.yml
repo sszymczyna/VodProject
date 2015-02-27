@@ -8,7 +8,7 @@ app:
   
 #routing for login controller
 login:
-    pattern: /show/login
+    pattern: /login
     defaults: {_controller: UekVodBundle:Security:login }
 
 login_check:
