@@ -11,8 +11,8 @@
 
                {% for film in available %}
   
-                <a href="#">
-                {{film.name}}
+                <a href="{{path('film_name',{'id': film.id})}}" class="list-group-item">{{film.name}}
+                {{film.id}}
                 {{film.cover}}
                 <img src="{{asset('bundles/uekvod/images/'~ film.name ~'.jpg')}}" class="img-thumbnail">
                 </a>
@@ -31,7 +31,7 @@
 	<h2>Najbardziej popularne filmy:</h2>
 
                {% for film in popular %}
-                <a href="#" class="list-group-item">
+                <a href="{{path('film_name',{'id': film.id})}}" class="list-group-item">
             <span class="badge">{{film.num}}</span>
              {{film.name}}                
                 </a>
@@ -45,7 +45,7 @@
 	<h2>Najwięcej recenzji:</h2>
 
                {% for film in review %}
-                <a href="#" class="list-group-item">
+                <a href="{{path('film_name',{'id': film.id})}}" class="list-group-item">
             <span class="badge">{{film.num}}</span>
              {{film.name}}
             </a>

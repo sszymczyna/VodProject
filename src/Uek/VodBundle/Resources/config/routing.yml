@@ -9,3 +9,7 @@ uek_vod_show_orders:
 film_genre:
     path:     /gatunek/{genre}
     defaults: { _controller: UekVodBundle:Default:genres }
+    
+film_name:
+    path:     /film/{id}
+    defaults: { _controller: UekVodBundle:Default:names }
