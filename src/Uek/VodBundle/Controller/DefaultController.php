@@ -28,9 +28,10 @@ class DefaultController extends Controller
          $query = $this->getDoctrine()->getManager()->createQuery('
              SELECT g FROM UekVodBundle:Genres g');
          
-         $genre = $query->getResult();        
+         $genre = $query->getResult();      
          
-        return $this->render('UekVodBundle:Default:index.html.twig',
+    
+         return $this->render('UekVodBundle:Default:index.html.twig',
              array('available' => $available, 'popular' => $popular, 'review' => $review, 'genre' => $genre));
     }
     

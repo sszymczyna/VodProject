@@ -11,12 +11,13 @@
 
                {% for film in available %}
   
-                <a href="#" class="list-group-item">
-                <span class="badge">
-                </span>
-             {{film.name}}
+                <a href="#">
+                {{film.name}}
+                {{film.cover}}
+                <img src="{{asset('bundles/uekvod/images/'~ film.name ~'.jpg')}}" class="img-thumbnail">
                 </a>
-
+             
+                
       
          {% endfor %}
 

@@ -21,8 +21,8 @@
 			</header>
 			
 			<div class="row">
-				<div class="col-md-4">
-					{% block AvailableFilms %}
+                                <div class="col-md-4">
+					{% block Genre %}
 					{% endblock %}
 				</div>
                             				
@@ -34,12 +34,7 @@
 					{% endblock %}
 				</div>   
                         </div>
-                        <div class="row">
-                                <div class="col-md-4">
-					{% block Genre %}
-					{% endblock %}
-				</div>
-			</div>
+
                     
                         <div class="row">
                                 <div class="col-md-4">
@@ -54,7 +49,12 @@
 					{% endblock %}
 				</div>
 			</div>
-                    
+                        <div class="row">
+                                        <div class="col-md-4">
+					{% block AvailableFilms %}
+					{% endblock %}
+				</div>
+                        </div>
 			<footer class="row">
 				<p>(c) Sebastian Szymczyna</p>
 			</footer>

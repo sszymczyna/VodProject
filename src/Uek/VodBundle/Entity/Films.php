@@ -43,6 +43,11 @@
      * @ORM\Column(type="boolean")
      */
     protected $available;
+
+    /**
+     * @ORM\Column(type="blob")
+     */
+    protected $cover;
     
       /**
       * @ORM\ManyToOne(targetEntity="Genres", inversedBy="films")
@@ -307,5 +312,28 @@
     public function getReviews()
     {
         return $this->reviews;
+    }
+
+    /**
+     * Set cover
+     *
+     * @param string $cover
+     * @return Films
+     */
+    public function setCover($cover)
+    {
+        $this->cover = $cover;
+
+        return $this;
+    }
+
+    /**
+     * Get cover
+     *
+     * @return string 
+     */
+    public function getCover()
+    {
+        return $this->cover;
     }
 }
