@@ -10,14 +10,13 @@
 	<h2>Dostępne filmy:</h2>
 
                {% for film in available %}
-  
+  <div class="col-md-3">
                 <a href="{{path('film_name',{'id': film.id})}}" class="list-group-item">{{film.name}}
                 {{film.id}}
                 {{film.cover}}
                 <img src="{{asset('bundles/uekvod/images/'~ film.name ~'.jpg')}}" class="img-thumbnail">
                 </a>
-             
-                
+  </div>        
       
          {% endfor %}
 
