@@ -15,7 +15,7 @@
  
         <p><a class="btn btn-primary btn-lg" href="" role="button">Wypożycz</a>
         {% if is_granted('ROLE_USER') %}
-        <a class="btn btn-primary btn-lg" href="" role="button">Dodaj recenzje</a>
+        <a class="btn btn-primary btn-lg" href="{{path('add_review')}}" role="button">Dodaj recenzje</a>
         {% endif %}
         </p>
         Cena: {{film.price}} <br><br>

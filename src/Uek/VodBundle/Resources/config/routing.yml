@@ -13,3 +13,12 @@ film_genre:
 film_name:
     path:     /film/{id}
     defaults: { _controller: UekVodBundle:Default:names }
+    
+add_review:
+    path:     /review
+    defaults: { _controller: UekVodBundle:Review:add }
+
+task_success:
+    path:     /
+    defaults: { _controller: UekVodBundle:Default:index }
+    
