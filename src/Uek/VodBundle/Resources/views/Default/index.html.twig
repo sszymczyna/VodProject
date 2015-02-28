@@ -7,19 +7,26 @@
         
  {% block AvailableFilms %}
       
-	<h2>Dostępne filmy:</h2>
-
-               {% for film in available %}
-  <div class="col-md-3">
-                <a href="{{path('film_name',{'id': film.id})}}" class="list-group-item">{{film.name}}
-                {{film.id}}
-                {{film.cover}}
-                <img src="{{asset('bundles/uekvod/images/'~ film.name ~'.jpg')}}" class="img-thumbnail">
-                </a>
-  </div>        
+    <h2>Dostępne filmy:</h2>
+        
+        {% if available %}
+                {% for film in available %}
+                    <div class="col-md-3">
+                        <a href="{{path('film_name',{'id': film.id})}}" class="list-group-item">{{film.name}}
+                            {{film.id}}
+                            <img src="{{asset('bundles/uekvod/images/'~ film.name ~'.jpg')}}" class="img-thumbnail">
+                        </a>
+                    </div>        
       
-         {% endfor %}
+                {% endfor %}
+            {% else %}
+                <div class="col-md-3">
+                    <dev class="list-group-item">
+                    brak filmów
 
+                    </dev>
+                </div> 
+            {% endif %}
 {% endblock %}		
 
  {% block content %}
@@ -28,21 +35,28 @@
  
   {% block PopularFilms %}
 	<h2>Najbardziej popularne filmy:</h2>
-
+            {% if popular %}
                {% for film in popular %}                      
                 <a href="{{path('film_name',{'id': film.id})}}" class="list-group-item">
             <span class="badge">{{film.num}}</span>
              {{film.name}}                
                 </a>
             </li>
-
+            
          {% endfor %}
+            
+            {% else %}
+ 
+                    <dev class="list-group-item"> brak
+                    <span class="badge">0</span> </dev>
+ 
+            {% endif %}
 	
 {% endblock %}
         
  {% block ReviewFilms %}
 	<h2>Najwięcej recenzji:</h2>
-
+            {% if review %}
                {% for film in review %}
                 <a href="{{path('film_name',{'id': film.id})}}" class="list-group-item">
             <span class="badge">{{film.num}}</span>
@@ -50,6 +64,12 @@
             </a>
    
          {% endfor %}
+        {% else %}
+ 
+                    <dev class="list-group-item"> brak
+                    <span class="badge">0</span> </dev>
+ 
+            {% endif %}
 	
 {% endblock %}
 
@@ -57,12 +77,18 @@
  {% block Genre %}
   <div class="list-group">
 	<h2>Gatunki:</h2>
-
+            {% if genre %}
          {% for film in genre %}
 
              <a href="{{path('film_genre',{'genre': film.name})}}" class="list-group-item">{{film.name}}</a>
 
          {% endfor %}	
+                     {% else %}
+ 
+                    <dev class="list-group-item"> brak
+                    <span class="badge">0</span> </dev>
+ 
+            {% endif %}
    </div>
 {% endblock %}
         

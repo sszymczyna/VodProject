@@ -2,14 +2,15 @@
 
  namespace Uek\VodBundle\Entity;
 
- use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
+use Doctrine\ORM\Mapping as ORM;
  use Doctrine\Common\Collections\ArrayCollection;
  
  /**
   * @ORM\Entity
   * @ORM\Table(name="users")
   */
- class Users
+ class Users extends BaseUser
  {
      /**
       * @ORM\Id
@@ -19,24 +20,17 @@
      protected $id;
 
      /**
-      * @ORM\Column(type="string", length=100)
-      */
-     protected $name;
-
-       /**
-      * @ORM\Column(type="string", length=100)
-      */
-     protected $email;
-    
-     /**
       * @ORM\OneToMany(targetEntity="Orders", mappedBy="users")
       */
      protected $orders;
 
      public function __construct()
      {
+         parent::__construct();
          $this->orders = new ArrayCollection();
      }
+
+
     /**
      * Get id
      *
@@ -45,52 +39,6 @@
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Users
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return Users
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
     }
 
     /**

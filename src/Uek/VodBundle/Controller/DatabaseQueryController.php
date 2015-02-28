@@ -23,16 +23,16 @@ $query = $this->getDoctrine()->getManager()->createQuery('
             SELECT u, p, c FROM UekVodBundle:Orders p
             JOIN p.films c
             JOIN p.users u
-            WHERE u.name = :name'
-        )->setParameter('name', $logUsrName);
+            WHERE u.username = :username'
+        )->setParameter('username', $logUsrName);
  
     $orders = $query->getResult();
     
     echo $this->get('security.context')->getToken()->getUser()->getUsername();
     if (!$orders) {
-        throw $this->createNotFoundException(
-            'No product found for id '
-        );
+
+            $orders=0;
+
     }
     return $this->render(
             'UekVodBundle:Default:show.html.twig',

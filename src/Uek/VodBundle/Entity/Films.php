@@ -44,11 +44,6 @@
      */
     protected $available;
 
-    /**
-     * @ORM\Column(type="blob")
-     */
-    
-    protected $cover;
  
     /**
      * @ORM\Column (type="text")

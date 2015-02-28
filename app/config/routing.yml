@@ -7,13 +7,16 @@ app:
     type:     annotation
   
 #routing for login controller
-login:
-    pattern: /login
-    defaults: {_controller: UekVodBundle:Security:login }
+#login:
+#    pattern: /login
+#    defaults: {_controller: UekVodBundle:Security:login }
 
-login_check:
-    pattern: /login_check
+#login_check:
+#    pattern: /login_check
     
-logout:
-    pattern: /logout
-    defaults: {_controller: UekVodBundle:Security:logout }
+#logout:
+#    pattern: /logout
+#    defaults: {_controller: UekVodBundle:Security:logout }
+    
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
