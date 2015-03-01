@@ -7,6 +7,8 @@
 
   
   {% block content %}
+        {% block addreview %}
+        {% endblock %}
 	<h2>Wybrany film:</h2>
 
                
@@ -15,7 +17,7 @@
  
         <p><a class="btn btn-primary btn-lg" href="" role="button">Wypożycz</a>
         {% if is_granted('ROLE_USER') %}
-        <a class="btn btn-primary btn-lg" href="{{path('add_review')}}" role="button">Dodaj recenzje</a>
+        <a class="btn btn-primary btn-lg" href="{{path('add_review',{'id': film.id})}}" role="button">Dodaj recenzje</a>
         {% endif %}
         </p>
         Cena: {{film.price}} <br><br>
@@ -25,7 +27,8 @@
              {{film.actor2}}<br><br>
          {% endfor %}
          {% for reviews in review %}
-             <h3>{{reviews.date|date("F jS \\a\\t g:ia")}}<br><br></h3>
+             {#{reviews.create_date|date("F jS \\a\\t g:ia")}#}
+             <h3>{#{reviews.create_date}#}<br><br></h3>{#{|date("F jS \\a\\t g:ia")}#}
              {{reviews.description}}<br><br>
          {% endfor %}
 	

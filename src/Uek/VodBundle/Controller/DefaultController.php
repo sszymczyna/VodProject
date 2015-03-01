@@ -60,7 +60,7 @@ class DefaultController extends Controller
             SELECT r,f FROM UekVodBundle:Reviews r
             JOIN r.films f
             WHERE f.id= :id
-            ORDER BY r.date');
+            ORDER BY r.create_date');
          $query->setParameter('id', $id);
          $review = $query->getResult();        
          

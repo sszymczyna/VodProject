@@ -15,10 +15,10 @@ film_name:
     defaults: { _controller: UekVodBundle:Default:names }
     
 add_review:
-    path:     /review
+    path:     /film/{id}/review
     defaults: { _controller: UekVodBundle:Review:add }
 
 task_success:
-    path:     /
-    defaults: { _controller: UekVodBundle:Default:index }
+    path:     /film/{id}
+    defaults: { _controller: UekVodBundle:Default:names }
     

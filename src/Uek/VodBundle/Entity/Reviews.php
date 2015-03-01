@@ -6,6 +6,7 @@
 
  /**
   * @ORM\Entity
+  * @ORM\HasLifecycleCallbacks()
   * @ORM\Table(name="reviews")
   */
  class Reviews
@@ -19,9 +20,16 @@
 
      /**
       * @ORM\Column(type="datetime")
-      */
-     protected $date;
-  
+     */
+      
+     protected $create_date;
+     /**
+     * @ORM\PrePersist
+     */
+    public function doStuffOnPrePersist()
+    {
+        $this->create_date = new \DateTime();
+    }
       /**
       * @ORM\ManyToOne(targetEntity="Films", inversedBy="orders")
       * @ORM\JoinColumn(name="films_id", referencedColumnName="id")
@@ -38,11 +46,19 @@
      * @ORM\Column (type="text")
      */
     protected $description;     
+ 
     /**
      * Get id
      *
      * @return integer 
      */
+    /**
+ * @ORM\prePersist
+ */ 
+public function setCreatedAtValue()
+{
+    $this->created_at = new \DateTime();
+}
     public function getId()
     {
         return $this->id;
@@ -138,5 +154,28 @@
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set create_date
+     *
+     * @param \DateTime $createDate
+     * @return Reviews
+     */
+    public function setCreateDate($createDate)
+    {
+        $this->create_date = $createDate;
+
+        return $this;
+    }
+
+    /**
+     * Get create_date
+     *
+     * @return \DateTime 
+     */
+    public function getCreateDate()
+    {
+        return $this->create_date;
     }
 }
