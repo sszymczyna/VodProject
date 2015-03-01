@@ -15,7 +15,7 @@
         {% for film in name %}
         <h3>{{film.name}}</h3><br>
  
-        <p><a class="btn btn-primary btn-lg" href="" role="button">Wypożycz</a>
+        <p><a class="btn btn-primary btn-lg" href="{{render(controller("UekVodBundle:Basket:add"))}}" role="button">Wypożycz</a>
         {% if is_granted('ROLE_USER') %}
         <a class="btn btn-primary btn-lg" href="{{path('add_review',{'id': film.id})}}" role="button">Dodaj recenzje</a>
         {% endif %}

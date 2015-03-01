@@ -22,3 +22,6 @@ task_success:
     path:     /film/{id}
     defaults: { _controller: UekVodBundle:Default:names }
     
+#add_basket:
+#    path:     /film/{id}/1
+#    defaults: { _controller: UekVodBundle:Basket:add, orderNumber: 1 }
