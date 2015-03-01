@@ -16,7 +16,7 @@ class CartController extends Controller{
 //       echo $number;
  //      $zmienna = '111';
 //            return $this->redirect($this->generateUrl('task_success',array()));z
-        return $this->render('UekVodBundle:Default:name.html.twig', array());
+        return $this->render('UekVodBundle::test.html.twig', array());
   //       return $this->render('UekVodBundle:Default:success.html.twig', array());
     }
     
