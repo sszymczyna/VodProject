@@ -1,0 +1,15 @@
+{% extends "UekVodBundle::information.html.twig" %}
+
+
+{% block header %}<a href="{{path('uek_vod_homepage')}}" class="list-group-item">
+  <h1>Strona główna</h1></a>
+{% endblock %}
+
+  
+  {% block content %}
+
+<h3>Wybrany film: 
+ <a class="btn btn-primary btn-lg" href="{{path('fos_user_security_login')}}" role="button">Wypożycz</a>
+</h3>
+	
+{% endblock %}

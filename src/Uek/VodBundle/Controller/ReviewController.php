@@ -17,14 +17,14 @@ class ReviewController extends Controller{
         $task->setTask('Tutaj możesz napisać recenzje wybranego filmu');
 #        $task->setDueDate(new \DateTime('tomorrow'));
 
-        $form = $this->createFormBuilder($task)
+        $formReview = $this->createFormBuilder($task)
             ->add('task', 'textarea')
  #           ->add('dueDate', 'date')
             ->add('save', 'submit')
             ->getForm();
-        $form->handleRequest($request);
+        $formReview->handleRequest($request);
         
-            if ($form->isValid()) {
+            if ($formReview->isValid()) {
                 $logUsrName = $this->get('security.context')->getToken()->getUser()->getId();
                 $date = date('Y-m-d H:i:s', time());
                 $em = $this->getDoctrine()->getManager();
@@ -43,7 +43,7 @@ class ReviewController extends Controller{
     }
         
         return $this->render('UekVodBundle:Review:add.html.twig', array(
-            'form' => $form->createView(),
+            'formReview' => $formReview->createView(),
         ));
     }
 }

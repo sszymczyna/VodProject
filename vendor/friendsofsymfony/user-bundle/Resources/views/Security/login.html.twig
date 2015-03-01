@@ -21,4 +21,6 @@
 
     <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
 </form>
+    <h3>Jeżeli nie masz konta to wciśnij przycisk, aby się zarejestrować</h3>
+     <a class="btn btn-primary btn-lg" href="{{path('fos_user_registration_register')}}" role="button">Rejestracja</a>
 {% endblock fos_user_content %}
