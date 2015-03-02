@@ -7,11 +7,16 @@ use Uek\VodBundle\Entity;
 use Symfony\Component\HttpFoundation\Request;
 
 class CartController extends Controller{
-    public function addAction(){
+    public function addAction($title){
         $session = $this->getRequest()->getSession();
         $number =$session->get('orderNumber');
+        $numberFilm =$session->get('numberFilm');
         $number += 1;
+        $numberFilm[$number]=$title;
+
+  //      $numberFilm[2]=$title;
         $session->set('orderNumber', $number);
+        $session->set('numberFilm', $numberFilm);
  //       $number =$session->get('orderNumber');
 //       echo $number;
  //      $zmienna = '111';
@@ -29,26 +34,17 @@ class CartController extends Controller{
  //           return $this->redirect($this->generateUrl('task_success',array('id'=>$id)));
 
         
-         return $this->render('UekVodBundle:layout.html.twig', array('number' => $number));
+         return $this->render('UekVodBundle::test.html.twig', array('number' => $number));
     }
     
          public function showAction(Request $request){
          
-        $query = $this->getDoctrine()->getManager()->createQuery('
-            SELECT f FROM UekVodBundle:Films f
-            WHERE f.id= :id
-            ORDER BY f.name');
-         $query->setParameter('id', 1);
-         $name = $query->getResult(); 
-         
-          $query = $this->getDoctrine()->getManager()->createQuery('
-            SELECT r,f FROM UekVodBundle:Reviews r
-            JOIN r.films f
-            WHERE f.id= :id
-            ORDER BY r.create_date DESC');
-         $query->setParameter('id', 1);
-         $review = $query->getResult();        
-         
-        return $this->render('UekVodBundle:Default:cart.html.twig', array('name' => $name, 'review' => $review));
+     
+          $session = $this->getRequest()->getSession();
+        
+        $name =$session->get('numberFilm');
+        $orderNumber =$session->get('orderNumber');
+     //  echo $name;
+        return $this->render('UekVodBundle:Default:cart.html.twig', array('name' => $name, 'orderNumber' => $orderNumber));
     }
 }

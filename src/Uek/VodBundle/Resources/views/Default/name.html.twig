@@ -5,22 +5,29 @@
   <h1>Strona główna</h1></a>
 {% endblock %}
 
-  
+{% block success %}
+{% endblock %}
   {% block content %}
-        {% block success %}
-        {% endblock %}
-	<h2>Wybrany film:</h2>
 
+	<h2>Wybrany film:</h2>
                
         {% for film in name %}
-        <h3>{{film.name}}</h3><br>
- 
-        <p><a class="btn btn-primary btn-lg" href="{{render(controller('UekVodBundle:Cart:add')) }}" role="button">Wypożycz</a>
-
-        {% if is_granted('ROLE_USER') %}
-        <a class="btn btn-primary btn-lg" href="{{path('add_review',{'id': film.id})}}" role="button">Dodaj recenzje</a>
-        {% endif %}
-        </p>
+            
+            <h3>{{film.name}}</h3><br>
+                <dev>
+                    <p>
+                        <a class="btn btn-primary btn-lg" 
+                           action="{{render(controller('UekVodBundle:Cart:add',{title:film.name})) }}" 
+                           role="button">Wypożycz</a>
+                </dev>
+                
+                {% if is_granted('ROLE_USER') %}
+                    <a class="btn btn-primary btn-lg" 
+                       href="{{path('add_review',{'id': film.id})}}" 
+                       role="button">Dodaj recenzje
+                    </a>
+                {% endif %}
+                    </p>
         Cena: {{film.price}} <br><br>
              {{film.description}}<br>
         <img src="{{asset('bundles/uekvod/images/'~ film.name ~'.jpg')}}" class="img-thumbnail"><br>

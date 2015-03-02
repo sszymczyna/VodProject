@@ -30,11 +30,11 @@
 				<p>
                                          <a class="btn btn-primary btn-lg" href="{{path('fos_user_security_login')}}" role="button">Zaloguj</a>
 
-				
+		
 			{% endif %}
                                          {% block orderNumber %}
                                     <a class="btn btn-primary btn-lg" href="{{path('vod_cart')}}" class="btn btn-primary btn-lg" role="button">Koszyk</a>
-
+		{{render(controller('UekVodBundle:Cart:get')) }}
                                     {% endblock %}
 </p>
                                 </div>

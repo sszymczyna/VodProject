@@ -8,8 +8,12 @@
   
   {% block content %}
 
-<h3>Wybrany film: 
+{{orderNumber}}
+
+        {% for film in name %}
+<h3>Wybrany film: {{film}} 
  <a class="btn btn-primary btn-lg" href="{{path('fos_user_security_login')}}" role="button">Wypożycz</a>
 </h3>
-	
+	{% endfor %}
+
 {% endblock %}
