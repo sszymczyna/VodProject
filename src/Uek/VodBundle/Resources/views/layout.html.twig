@@ -12,12 +12,14 @@
 		<meta charset="UTF-8">
         </head>
         
-        	
+        <title>Wypożyczalnia</title>
 	<body>
 		<div class="container">
 			<header class="row">
 				<div class="jumbotron">
 					{% block header %}
+                                    <h1>Wypożyczalnia filmów VOD</h1>
+                                    <p>Witaj na stronie. Materiały nie mają charakteru komercyjnego. Służą jedynie do celów naukowych</p>
 					{% endblock %}
                                                     {% if is_granted('ROLE_USER') %}
                                                     <p>
@@ -49,7 +51,8 @@
 			           
 				<div class="col-md-8">
 					{% block content %}
-						{% block fos_user_content %}
+						    {% block FOSlog %}
+                                    
 						{% endblock %}
 					{% endblock %}
 				</div>   

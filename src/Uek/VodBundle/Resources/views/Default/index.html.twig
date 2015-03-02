@@ -1,10 +1,6 @@
 {% extends "UekVodBundle::layout.html.twig" %}
 
-{% block header %}
-	<h1>Wypożyczalnia filmów VOD</h1>
-
-{% endblock %}
-        
+  {%block bars %}      
  {% block AvailableFilms %}
       
     <h2>Dostępne filmy:</h2>
@@ -30,7 +26,7 @@
 {% endblock %}		
 
  {% block content %}
-        <h3>Witaj na stronie. Materiały nie mają charakteru komercyjnego. Służą jedynie do celów naukowych</h3>
+        
  {% endblock %}
  
   {% block PopularFilms %}
@@ -90,5 +86,6 @@
  
             {% endif %}
    </div>
+{% endblock %}
 {% endblock %}
         
