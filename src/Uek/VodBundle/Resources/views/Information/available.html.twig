@@ -1,0 +1,22 @@
+ {% block content %}
+      
+    <h2>Dostępne filmy:</h2>
+        
+        {% if available %}
+                {% for film in available %}
+                    <div class="col-md-4">
+                        <a href="{{path('film_name',{'id': film.id})}}" class="list-group-item">{{film.name}}
+                            <img src="{{asset('bundles/uekvod/images/'~ film.name ~'.jpg')}}" class="img-thumbnail">
+                        </a>
+                    </div>        
+      
+                {% endfor %}
+            {% else %}
+                <div class="col-md-3">
+                    <dev class="list-group-item">
+                    brak filmów
+
+                    </dev>
+                </div> 
+            {% endif %}
+{% endblock %}

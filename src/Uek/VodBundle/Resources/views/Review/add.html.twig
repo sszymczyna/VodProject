@@ -1,5 +1,22 @@
 {% extends "UekVodBundle::information.html.twig" %}
 
 {% block content %}
-{{ form(formReview) }}
+	<form class="form-horizontal" method="POST">
+		{% block form_row %}
+				{% for child in formReview.children %}
+					{% if 'token' in child.vars.name %}
+						{{ form_widget(child) }}
+					{% elseif child.vars.name == 'save' %}
+						{{ form_label(child) }}
+				        {{ form_widget(child) }}
+					{% else %}
+			    		<div class="form-group">
+					        {{ form_label(child) }}
+					        {{ form_widget(child, {'attr': {'class': attr.class|default('') ~ 'form-control'}}) }}
+					    </div>
+					{% endif %}
+				{% endfor %}
+		{% endblock form_row %}
+	</form>
 {% endblock %}
+{#{ form(formReview) }#}

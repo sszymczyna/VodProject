@@ -1,0 +1,17 @@
+ {% block Genre %}
+  <div class="list-group">
+	<h2>Gatunki:</h2>
+            {% if genre %}
+         {% for film in genre %}
+
+             <a href="{{path('film_genre',{'genre': film.name})}}" class="list-group-item">{{film.name}}</a>
+
+         {% endfor %}	
+                     {% else %}
+ 
+                    <dev class="list-group-item"> brak
+                    <span class="badge">0</span> </dev>
+ 
+            {% endif %}
+   </div>
+{% endblock %}

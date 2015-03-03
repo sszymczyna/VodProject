@@ -1,0 +1,22 @@
+{% block PopularFilms %}
+<h2>Najpopularniejsze filmy:</h2>
+            {% if popular %}
+               {% for film in popular %}    
+               {% if(loop.index < 4) %}
+                    <a href="{{path('film_name',{'id': film.id})}}" class="list-group-item">
+                        <span class="badge">{{film.num}}</span>
+                        {{film.name}}                
+                    </a>
+            </li>
+            {% endif %}
+            
+         {% endfor %}
+            
+            {% else %}
+ 
+                    <dev class="list-group-item"> brak
+                    <span class="badge">0</span> </dev>
+ 
+            {% endif %}
+{% endblock %}
+        

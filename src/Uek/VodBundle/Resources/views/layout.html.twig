@@ -18,14 +18,15 @@
 			<header class="row">
 				<div class="jumbotron">
 					{% block header %}
-                                    <h1>Wypożyczalnia filmów VOD</h1>
-                                    <p>Witaj na stronie. Materiały nie mają charakteru komercyjnego. Służą jedynie do celów naukowych</p>
+                                    <h1><a href="{{path('uek_vod_homepage')}}">Wypożyczalnia filmów VOD</a></h1>
+                                    <p><small>Witaj na stronie. Materiały nie mają charakteru komercyjnego. Portal jest stworzony jako praca zaliczeniowa na przedmiot Pracownia programowanie UEK</small></p>
 					{% endblock %}
                                                     {% if is_granted('ROLE_USER') %}
                                                     <p>
                                                     Witaj {{app.user.username}}! 
+                                                    <a href="{{path('fos_user_security_logout')}}" class="btn btn-primary btn-lg">Wyloguj</a>                                                    
                                                     <a href="{{path('uek_vod_show_orders')}}" class="btn btn-primary btn-lg">Historia zamówień</a>
-                                                    <a href="{{path('fos_user_security_logout')}}" class="btn btn-primary btn-lg">Wyloguj</a>
+
 					
 				
 			{% else %}
@@ -35,7 +36,7 @@
 		
 			{% endif %}
                                          {% block orderNumber %}
-                                    <a class="btn btn-primary btn-lg" href="{{path('vod_cart')}}" class="btn btn-primary btn-lg" role="button">Koszyk</a>
+                                    <a class="btn btn-primary btn-lg" href="{{path('vod_cart')}}" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> 0</a>
 		{{render(controller('UekVodBundle:Cart:get')) }}
                                     {% endblock %}
 </p>
@@ -44,8 +45,18 @@
 			
 			<div class="row">
                                 <div class="col-md-4">
-					{% block Genre %}
-					{% endblock %}
+                                    {% block information %}
+
+                                    {% endblock %}
+                                 <div class="row">
+                
+                <div class="container">
+                    <br><br>
+			<footer class="row">
+				<p>(c) Sebastian Szymczyna</p>
+			</footer>
+		</div>
+            </div>
 				</div>
                             				
 			           
@@ -56,33 +67,11 @@
 						{% endblock %}
 					{% endblock %}
 				</div>   
-                        </div>
+                        
 
                     
-                        <div class="row">
-                                <div class="col-md-4">
-					{% block PopularFilms %}
-					{% endblock %}
-				</div>
-			</div>
 
-                        <div class="row">
-				<div class="col-md-4">
-					{% block ReviewFilms %}
-					{% endblock %}
-				</div>
-			</div>
-                </div>
-            <div class="container">
-                        <div class="row">
 
-					{% block AvailableFilms %}
-					{% endblock %}
 
-                        </div>
-			<footer class="row">
-				<p>(c) Sebastian Szymczyna</p>
-			</footer>
-		</div>
 	</body>
 </html>

@@ -20,15 +20,16 @@ class DatabaseQueryController extends Controller
     
     $logUsrName = $this->get('security.context')->getToken()->getUser()->getUsername();
 $query = $this->getDoctrine()->getManager()->createQuery('
-            SELECT u, p, c FROM UekVodBundle:Orders p
-            JOIN p.films c
-            JOIN p.users u
-            WHERE u.username = :username'
+            SELECT u, o, f FROM UekVodBundle:Orders o
+            JOIN o.films f
+            JOIN o.users u
+            WHERE u.username = :username
+            ORDER BY o.date ASC'
         )->setParameter('username', $logUsrName);
  
     $orders = $query->getResult();
     
-    echo $this->get('security.context')->getToken()->getUser()->getUsername();
+
     if (!$orders) {
 
             $orders=0;

@@ -1,15 +1,14 @@
 {% extends "UekVodBundle::information.html.twig" %}
 
-{% block header %}
-  <h1>GATUNEK</h1>
-{% endblock %}
   
   {% block content %}
-	<h2>Wybrane filmy:</h2>
+	<h2>Wybrany gatunek: {{genre}}</h2>
 
-               {% for film in genre %}
+               {% for film in qGenre %}
  
-             {{film.name}}
+        <h3> <a href="{{path('film_name',{'id': film.id})}}" class="list-group-item">
+                        {{film.name}}                
+                    </a></h3>
 
          {% endfor %}
 	

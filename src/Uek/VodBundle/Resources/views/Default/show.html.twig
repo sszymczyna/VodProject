@@ -1,8 +1,6 @@
 {% extends "UekVodBundle::information.html.twig" %}
 
-{% block header %}<a href="{{path('uek_vod_homepage')}}" class="list-group-item">
-  <h1>Strona główna</h1></a>
-{% endblock %}
+
 
 {% block content %}
  <html>
@@ -10,16 +8,15 @@
         {# <title>{% block title %}Default title{% endblock %}</title>#}
      </head>
      <body>
-         
-     <h1>List of orders</h1>
+
+     <h1>Lista zamówień:</h1>
      <ul>
          {% for post in orders %}
          <li>
-   
-             {{post.films.name}}
-             {{post.date|date("F jS \\a\\t g:ia")}}
-             
-             </a>
+             {{post.date|date('d/m/y H:i', false)}}
+             <b>           {{post.films.name}}
+             </b>
+             </a>   
          </li>
          {% endfor %}
      </ul>

@@ -30,7 +30,7 @@ class CartController extends Controller{
         $session = $this->getRequest()->getSession();
         
         $number =$session->get('orderNumber');
-       echo $number;
+
  //           return $this->redirect($this->generateUrl('task_success',array('id'=>$id)));
 
         

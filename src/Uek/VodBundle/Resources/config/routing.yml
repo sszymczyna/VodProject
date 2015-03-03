@@ -11,16 +11,16 @@ film_genre:
     defaults: { _controller: UekVodBundle:Default:genres }
     
 film_name:
-    path:     /film/{id}
-    defaults: { _controller: UekVodBundle:Default:names }
+    path:     /movie/{id}
+    defaults: { _controller: UekVodBundle:Default:names, s: 0 }
     
 add_review:
-    path:     /film/{id}/review
+    path:     /movie/{id}/review
     defaults: { _controller: UekVodBundle:Review:add }
 
 task_success:
-    path:     /film/{id}
-    defaults: { _controller: UekVodBundle:Default:names }
+    path:     /movie/{id}/s
+    defaults: { _controller: UekVodBundle:Default:names, s: 1 }
     
 vod_cart:
     path:     /cart

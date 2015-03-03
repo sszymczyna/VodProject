@@ -1,13 +1,12 @@
 {% extends "UekVodBundle::information.html.twig" %}
 
 
-{% block header %}
-{% endblock %}
-
-{% block success %}
-{% endblock %}
   {% block content %}
+{% if s == 1 %}
 
+<h3><p class="text-center"><span class="label label-default">Twoja recenzja została dodana!</span></p></h3>
+
+{% endif %}
 	<h2>Wybrany film:</h2>
                
         {% for film in name %}
@@ -15,28 +14,39 @@
             <h3>{{film.name}}</h3><br>
                 <dev>
                     <p>
-                        <a class="btn btn-primary btn-lg" 
+                        <a class="btn btn-success btn-lg" 
                            action="{{render(controller('UekVodBundle:Cart:add',{title:film.name})) }}" 
                            role="button">Wypożycz</a>
                 </dev>
                 
                 {% if is_granted('ROLE_USER') %}
+            
                     <a class="btn btn-primary btn-lg" 
                        href="{{path('add_review',{'id': film.id})}}" 
                        role="button">Dodaj recenzje
                     </a>
                 {% endif %}
                     </p>
-        Cena: {{film.price}} <br><br>
-             {{film.description}}<br>
-        <img src="{{asset('bundles/uekvod/images/'~ film.name ~'.jpg')}}" class="img-thumbnail"><br>
-             {{film.actor1}}<br>
-             {{film.actor2}}<br><br>
+                    <h3><strong>Cena:</strong> {{film.price}} zł</h3>   
+                            
+<div class="media">
+  <div class="media-left media-top">
+      <img class="media-object" width="270" src="{{asset('bundles/uekvod/images/'~ film.name ~'.jpg')}}" alt="...">
+  </div>
+  <div class="media-body">
+{{film.description}}
+          <h3>Aktorzy: {{film.actor1}}, {{film.actor2}}</h3>
+  </div>
+</div>
          {% endfor %}
+         {% if s != 1 %}
+	<h2>Recenzje:</h2>
          {% for reviews in review %}
-             {#{reviews.create_date|date("F jS \\a\\t g:ia")}#}
-             <h3>{#{reviews.create_date}#}<br><br></h3>{#{|date("F jS \\a\\t g:ia")}#}
-             {{reviews.description}}<br><br>
+            <blockquote>
+                <p>{{reviews.description}}</p>
+                <footer>{{reviews.users.username}} <cite title="Source Title">: {{reviews.getCreateDate()|date('d/m/y H:i', false)}}</cite></footer>
+            </blockquote>
+
          {% endfor %}
-	
+	{%endif%}
 {% endblock %}

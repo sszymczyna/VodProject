@@ -1,2 +1,18 @@
-{% extends "UekVodBundle::layout.html.twig" %}
+{% extends "UekVodBundle::layout.html.twig" %}	
+
+{% block information %}
+    {% block PopularFilms %}
+        {{render(controller('UekVodBundle:Default:popular')) }}
+    {% endblock %}
+        
+    {% block ReviewFilms %}
+        {{render(controller('UekVodBundle:Default:review')) }}
+    {% endblock %}
+       
+    {% block Genre %}
+        {{render(controller('UekVodBundle:Default:genre')) }}
+    {% endblock %}
+{% endblock %}
+
+        
 

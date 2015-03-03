@@ -14,13 +14,14 @@ class ReviewController extends Controller{
             {
         // create a task and give it some dummy data for this example
         $task = new Task();
-        $task->setTask('Tutaj możesz napisać recenzje wybranego filmu');
+#        $task->setTask('Tutaj możesz napisać recenzje wybranego filmu');
 #        $task->setDueDate(new \DateTime('tomorrow'));
 
         $formReview = $this->createFormBuilder($task)
             ->add('task', 'textarea')
  #           ->add('dueDate', 'date')
-            ->add('save', 'submit')
+            ->add('Zapisz recenzje', 'submit')
+                
             ->getForm();
         $formReview->handleRequest($request);
         
