@@ -2,6 +2,8 @@
 
 namespace Uek\VodBundle\Controller;
 
+use Uek\VodBundle\Entity\Task;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 #use Uek\VodBundlekBundle\Controller\Controller\DatabaseQueryController;
 
@@ -74,15 +76,10 @@ class DefaultController extends Controller
         return $this->render('UekVodBundle:Default:genre.html.twig', array('qGenre' => $qGenre, 'genre' => $genre));
     }
     
-     public function namesAction($id,$s)
+     public function namesAction(Request $request, $id,$s)
     {
-        $query = $this->getDoctrine()->getManager()->createQuery('
-            SELECT f FROM UekVodBundle:Films f
-            WHERE f.id= :id
-            ORDER BY f.name');
-         $query->setParameter('id', $id);
-         $name = $query->getResult(); 
-         
+        $name = $this->getDoctrine()->getRepository('UekVodBundle:Films')->find($id);
+     
           $query = $this->getDoctrine()->getManager()->createQuery('
             SELECT r,f,u FROM UekVodBundle:Reviews r
             JOIN r.films f
@@ -92,6 +89,37 @@ class DefaultController extends Controller
          $query->setParameter('id', $id);
          $review = $query->getResult();        
          echo $s;
-        return $this->render('UekVodBundle:Default:name.html.twig', array('name' => $name, 'review' => $review, 's' => $s));
-    }
+         
+               $em = $this->getDoctrine()->getManager();
+
+                $film = $em->getRepository('UekVodBundle:Films')->find($id);
+            
+        $formReview = $this->createFormBuilder()->getForm();
+        $formReview->handleRequest($request);
+        
+        if ($formReview->isValid()) {
+
+                    $session = $this->getRequest()->getSession();
+        $number =$session->get('orderNumber');
+        $numberFilm =$session->get('numberFilm');
+        $su=0;
+ 
+        for($i=1; $i <= $number; $i++){
+ 
+            if (!strcmp($numberFilm[$i],$film->getName())){
+                $su= 1;        
+            }
+        }
+        if($su == 0){
+            $number += 1;
+            $numberFilm[$number]=$film->getName();
+
+  //      $numberFilm[2]=$title;
+        $session->set('orderNumber', $number);
+        $session->set('numberFilm', $numberFilm);}
+            
+            }
+        return $this->render('UekVodBundle:Default:name.html.twig', array('name' => $name, 'review' => $review, 'formReview' => $formReview->createView(), 's' => $s));
+    
+}
 }

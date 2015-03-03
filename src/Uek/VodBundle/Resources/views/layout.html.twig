@@ -36,7 +36,7 @@
 		
 			{% endif %}
                                          {% block orderNumber %}
-                                    <a class="btn btn-primary btn-lg" href="{{path('vod_cart')}}" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> 0</a>
+                                    <a class="btn btn-primary btn-lg" href="{{path('vod_cart')}}" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">{{render(controller('UekVodBundle:Cart:get')) }}  {#{orderNumber}#}</span></a>
 		{{render(controller('UekVodBundle:Cart:get')) }}
                                     {% endblock %}
 </p>

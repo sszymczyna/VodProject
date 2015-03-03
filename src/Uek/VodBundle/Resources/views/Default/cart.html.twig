@@ -1,19 +1,15 @@
 {% extends "UekVodBundle::information.html.twig" %}
 
-
-{% block header %}<a href="{{path('uek_vod_homepage')}}" class="list-group-item">
-  <h1>Strona główna</h1></a>
-{% endblock %}
-
   
   {% block content %}
 
-{{orderNumber}}
-
+<h2>Twój koszyk: </h2>
         {% for film in name %}
-<h3>Wybrany film: {{film}} 
- <a class="btn btn-primary btn-lg" href="{{path('fos_user_security_login')}}" role="button">Wypożycz</a>
-</h3>
+<h4>
+ <a class="btn btn-success btn-xs"  href="{{path('fos_user_security_login')}}" role="button">wypożycz</a>
+ <a class="btn btn-danger btn-xs"  href="" role="button">usuń</a>
+ Wybrany film: {{film}} 
+</h4>
 	{% endfor %}
 
 {% endblock %}

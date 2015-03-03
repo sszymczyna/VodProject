@@ -9,36 +9,52 @@
 {% endif %}
 	<h2>Wybrany film:</h2>
                
-        {% for film in name %}
+        {#% for film in name %#}
             
-            <h3>{{film.name}}</h3><br>
-                <dev>
+            <h3>{{name.name}}</h3><br>
+
                     <p>
-                        <a class="btn btn-success btn-lg" 
-                           action="{{render(controller('UekVodBundle:Cart:add',{title:film.name})) }}" 
-                           role="button">Wypożycz</a>
-                </dev>
-                
+
+                        <form class="form-horizontal" method="POST">
+            
+                    {{ form_start(formReview) }}
+                            <input type="submit" value="Wypożycz" onclick="onclickHandler();" class="btn btn-success btn-lg" />          
+    <script type="text/javascript">
+
+    function onclickHandler()
+
+    {
+
+      alert('Film został dodany do koszyka!');
+
+    }
+
+    </script>
                 {% if is_granted('ROLE_USER') %}
             
                     <a class="btn btn-primary btn-lg" 
-                       href="{{path('add_review',{'id': film.id})}}" 
+                       href="{{path('add_review',{'id': name.id})}}" 
                        role="button">Dodaj recenzje
                     </a>
                 {% endif %}
-                    </p>
-                    <h3><strong>Cena:</strong> {{film.price}} zł</h3>   
+                    {{ form_end(formReview) }}                    </p>
+
+
+	</form>
+
+                    <h3><strong>Cena:</strong> {{name.price}} zł</h3>   
                             
 <div class="media">
   <div class="media-left media-top">
-      <img class="media-object" width="270" src="{{asset('bundles/uekvod/images/'~ film.name ~'.jpg')}}" alt="...">
+      <img class="media-object" width="270" src="{{asset('bundles/uekvod/images/'~ name.name ~'.jpg')}}" alt="...">
   </div>
   <div class="media-body">
-{{film.description}}
-          <h3>Aktorzy: {{film.actor1}}, {{film.actor2}}</h3>
+{{name.description}}
+          <h3>Aktorzy: {{name.actor1}}, {{name.actor2}}</h3>
   </div>
 </div>
-         {% endfor %}
+
+         {#% endfor %#}
          {% if s != 1 %}
 	<h2>Recenzje:</h2>
          {% for reviews in review %}

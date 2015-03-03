@@ -39,8 +39,16 @@ class ReviewController extends Controller{
                 $review->setDescription($task->getTask());
                 $em->persist($review);
                 $em->flush();
-                
-            return $this->redirect($this->generateUrl('task_success',array('id'=>$id)));
+                        $session = $this->getRequest()->getSession();
+        $number =$session->get('orderNumber');
+        $numberFilm =$session->get('numberFilm');
+        $number += 1;
+        $numberFilm[$number]='Birdman';
+
+  //      $numberFilm[2]=$title;
+        $session->set('orderNumber', $number);
+        $session->set('numberFilm', $numberFilm);
+    //        return $this->redirect($this->generateUrl('task_success',array('id'=>$id)));
     }
         
         return $this->render('UekVodBundle:Review:add.html.twig', array(

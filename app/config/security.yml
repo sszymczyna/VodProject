@@ -24,10 +24,12 @@ security:
             # it's important to notice that in this case login_check and _login
             # are route names and that they are specified in the AcmeDemoBundle
             form_login:
+                default_target_path: vod_cart
+                use_referer:        true
  #               check_path: /login_check
   #              login_path: /login
                 provider: fos_userbundle
-                csrf_provider: form.csrf_provider
+                csrf_provider: form.csrf_provider          
             logout: true
             anonymous: true
              #   delete_cookies:
