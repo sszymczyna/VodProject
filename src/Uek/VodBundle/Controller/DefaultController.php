@@ -88,35 +88,55 @@ class DefaultController extends Controller
             ORDER BY r.create_date DESC');
          $query->setParameter('id', $id);
          $review = $query->getResult();        
+    /*    
+        $logUsrName = $this->get('security.context')->getToken()->getUser()->getId();
+        $user = $this->getDoctrine()->getRepository('UekVodBundle:Users')->find($logUsrName)->getId();
+        
+        $order =  $this->getDoctrine()->getManager()->createQuery('
+            SELECT u,o,f,st FROM UekVodBundle:Orders o
+            JOIN o.users u
+            JOIN o.films f
+            JOIN o.orderStatus st
+            WHERE f.id= :fid AND u.id= :uid AND st.name :na');
+         $order->setParameter('fid', $id);
+         $order->setParameter('uid', $user);
+          $order->setParameter('na', "zapłacone");
+          $order = $order->getResult();*/
+  //       $query->setParameter('uid', $user);
+  //       $review = $query->getResult();  
+ //              $em = $this->getDoctrine()->getManager();
 
-         
-               $em = $this->getDoctrine()->getManager();
-
-                $film = $em->getRepository('UekVodBundle:Films')->find($id);
+ //               $film = $em->getRepository('UekVodBundle:Films')->find($id);
             
         $formReview = $this->createFormBuilder()->getForm();
         $formReview->handleRequest($request);
         
-        if ($formReview->isValid()) {
-
-                    $session = $this->getRequest()->getSession();
+                            $session = $this->getRequest()->getSession();
         $number =$session->get('orderNumber');
         $numberFilm =$session->get('numberFilm');
+        $price = $session->get('price');
+        if ($formReview->isValid()) {
+
+
         $su=0;
  
         for($i=1; $i <= $number; $i++){
  
-            if (!strcmp($numberFilm[$i],$film->getName())){
+            if (!strcmp($numberFilm[$i],$name->getName())){
                 $su= 1;        
             }
         }
         if($su == 0){
             $number += 1;
-            $numberFilm[$number]=$film->getName();
+            $numberFilm[$number]=$name->getName();
+            $price = $price + $name->getPrice() ;
 
   //      $numberFilm[2]=$title;
         $session->set('orderNumber', $number);
-        $session->set('numberFilm', $numberFilm);}
+        $session->set('numberFilm', $numberFilm);
+        $session->set('price', $price);
+
+        }
             
             }
         return $this->render('UekVodBundle:Default:name.html.twig', array('name' => $name, 'review' => $review, 'formReview' => $formReview->createView(), 's' => $s));

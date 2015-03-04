@@ -13,10 +13,11 @@
             
             <h3>{{name.name}}</h3><br>
 
+
                     <p>
 
                         <form class="form-horizontal" method="POST">
-            
+
                     {{ form_start(formReview) }}
                             <input type="submit" value="Wypożycz" onclick="onclickHandler();" class="btn btn-success btn-lg" />          
     <script type="text/javascript">
@@ -30,6 +31,7 @@
     }
 
     </script>
+
                 {% if is_granted('ROLE_USER') %}
             
                     <a class="btn btn-primary btn-lg" 
@@ -42,7 +44,7 @@
 
 	</form>
 
-                    <h3><strong>Cena:</strong> {{name.price}} zł</h3>   
+                    <h3><strong>Cena:</strong> {{name.price}} zł</h3> 
                             
 <div class="media">
   <div class="media-left media-top">

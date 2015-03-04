@@ -15,20 +15,27 @@ class PayController extends Controller{
     
     public function payAction()
     {
-   
+        
         if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
         throw new AccessDeniedException();
     }
+    
+    $session = $this->getRequest()->getSession();
+    $price=$session->get('price');
+    $mail=$this->get('security.context')->getToken()->getUser()->getEmail();
+    
+   // $em = $this->getDoctrine()->getManager();
+   //             $user = $em->getRepository('UekVodBundle:Users')->findByUsername($logUsrName);
+    //            $film = $em->getRepository('UekVodBundle:Films')->find($id);
+                
+                
 		$data = [
-			'id' =>'',
-			'kwota' => 160.49,
+			'id' =>'72890',
+			'kwota' => $price,
 			'waluta' => 'PLN',
 			'opis' => 'Zapłata za wypożyczenia',
-			'control' => 'DOK000045/01/2015',
-			'URLC' => 'http://myDomain.dev/app_dev.php/payment/handle',
-			'firstname' => 'myName',
-			'lastname' => 'mySurname',
-			'email' => 'jakub@jkan.pl'
+			'URLC' => 'http://v-ie.uek.krakow.pl',
+			'email' => $mail
 		];
 		$params = http_build_query($data);
 		$url = sprintf(

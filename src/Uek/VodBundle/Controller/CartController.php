@@ -32,6 +32,7 @@ class CartController extends Controller{
         
         $name =$session->get('numberFilm');
         $orderNumber =$session->get('orderNumber');
+        $price =$session->get('price');
         
        $formReview = $this->createFormBuilder()->getForm();
         $formReview->handleRequest($request);
@@ -41,11 +42,13 @@ class CartController extends Controller{
                 unset ($name[$i]);
             }
         $orderNumber = 0;
+        $price = 0;
    
         $session->set('orderNumber', $orderNumber);
         $session->set('numberFilm', $name);
+        $session->set('price', $price);
             
             }
-        return $this->render('UekVodBundle:Default:cart.html.twig', array('name' => $name, 'formReview' => $formReview->createView()));
+        return $this->render('UekVodBundle:Default:cart.html.twig', array('price' => $price,'name' => $name, 'formReview' => $formReview->createView()));
     }
 }
