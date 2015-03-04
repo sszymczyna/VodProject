@@ -4,6 +4,8 @@ namespace Uek\VodBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 /**
  * Description of SecurityController
  *
@@ -13,11 +15,11 @@ class PayController extends Controller{
     
     public function payAction()
     {
-    
+   
         if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
         throw new AccessDeniedException();
     }
-/*		$data = [
+		$data = [
 			'id' =>'',
 			'kwota' => 160.49,
 			'waluta' => 'PLN',
@@ -34,11 +36,7 @@ class PayController extends Controller{
 			'https://ssl.dotpay.pl',
 			$params
 		);
-*/		
-//		return new RedirectResponse($url);
-       return $this->render(
-            'UekVodBundle:Default:index.html.twig',
-            array()
-        );
+		
+		return new RedirectResponse($url);
     }
 }

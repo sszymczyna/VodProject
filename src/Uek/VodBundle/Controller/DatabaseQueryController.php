@@ -4,7 +4,7 @@ namespace Uek\VodBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Uek\VodBundle\Entity\Films;
-use Uek\VodBundle\Entity\Users;
+//use Uek\VodBundle\Entity\Users;
 use Uek\VodBundle\Entity\Orders;
 use Uek\VodBundle\Entity\Genres;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;

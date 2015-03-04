@@ -13,7 +13,7 @@
      <ul>
          {% for order in orders %}
          <li>{%if order.orderStatus.name == "w trakcie"%}
-             <button type="button" class="btn btn-warning btn-xs">{{order.orderStatus.name}}</button>
+             <a type="button" href="{{path('vod_pay')}}" class="btn btn-warning btn-xs" >{{order.orderStatus.name}}</a>
         {% endif %}
              {%if order.orderStatus.name == "zapłacone"%}
              <button type="button" class="btn btn-success btn-xs " disabled="disabled">{{order.orderStatus.name}}</button>
