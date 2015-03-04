@@ -33,7 +33,12 @@
       * @ORM\JoinColumn(name="users_id", referencedColumnName="id")
       */
      protected $users;     
- 
+      /**
+      * @ORM\ManyToOne(targetEntity="OrderStatus", inversedBy="orders")
+      * @ORM\JoinColumn(name="status_name", referencedColumnName="name")
+      */
+     protected $orderStatus; 
+
     /**
      * Get id
      *
@@ -111,5 +116,29 @@
     public function getUsers()
     {
         return $this->users;
+    }
+
+
+    /**
+     * Set orderStatus
+     *
+     * @param \Uek\VodBundle\Entity\OrderStatus $orderStatus
+     * @return Orders
+     */
+    public function setOrderStatus(\Uek\VodBundle\Entity\OrderStatus $orderStatus = null)
+    {
+        $this->orderStatus = $orderStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get orderStatus
+     *
+     * @return \Uek\VodBundle\Entity\OrderStatus 
+     */
+    public function getOrderStatus()
+    {
+        return $this->orderStatus;
     }
 }

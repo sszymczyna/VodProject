@@ -11,13 +11,18 @@
 
      <h1>Lista zamówień:</h1>
      <ul>
-         {% for post in orders %}
-         <li>
-             {{post.date|date('d/m/y H:i', false)}}
-             <b>           {{post.films.name}}
+         {% for order in orders %}
+         <li>{%if order.orderStatus.name == "w trakcie"%}
+             <button type="button" class="btn btn-warning btn-xs">{{order.orderStatus.name}}</button>
+        {% endif %}
+             {%if order.orderStatus.name == "zapłacone"%}
+             <button type="button" class="btn btn-success btn-xs " disabled="disabled">{{order.orderStatus.name}}</button>
+        {% endif %}
+             {{order.date|date('d/m/y H:i', false)}}
+             <b>           {{order.films.name}}
              </b>
              </a>   
-         </li>
+         </li><br>
          {% endfor %}
      </ul>
 

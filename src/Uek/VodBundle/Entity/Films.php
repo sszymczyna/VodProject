@@ -105,12 +105,6 @@
         return $this->name;
     }
 
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return Films
-     */
 
     /**
      * Add orders

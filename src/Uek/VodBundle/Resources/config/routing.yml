@@ -12,7 +12,7 @@ film_genre:
     
 film_name:
     path:     /movie/{id}
-    defaults: { _controller: UekVodBundle:Default:names, s: 0 }
+    defaults: { _controller: UekVodBundle:Default:names, s: 's' }
     
 add_review:
     path:     /movie/{id}/review
@@ -24,4 +24,8 @@ task_success:
     
 vod_cart:
     path:     /cart
-    defaults: { _controller: UekVodBundle:Cart:show, orderNumber: 1 }
+    defaults: { _controller: UekVodBundle:Cart:show}
+
+vod_pay:
+    path:     /pay
+    defaults: { _controller: UekVodBundle:Pay:pay}

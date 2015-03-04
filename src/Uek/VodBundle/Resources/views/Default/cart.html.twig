@@ -3,13 +3,25 @@
   
   {% block content %}
 
-<h2>Twój koszyk: </h2>
+{% if name %}
+                            <form class="form-horizontal" method="POST">
+<h2>Twój koszyk: </h2>  <a class="btn btn-success btn-xl"  href="{{path('vod_pay')}}" role="button">wypożycz</a>
+{% endif %}
+
+                                
+            
+                    {{ form_start(formReview) }}
+                            <input type="submit" value="usuń" class="btn btn-danger btn-xl" />
+                            {{ form_end(formReview) }} 
         {% for film in name %}
 <h4>
- <a class="btn btn-success btn-xs"  href="{{path('fos_user_security_login')}}" role="button">wypożycz</a>
- <a class="btn btn-danger btn-xs"  href="" role="button">usuń</a>
- Wybrany film: {{film}} 
+
+                                 {{film}}
+
+ 
 </h4>
+                                                            </form>
+                                
 	{% endfor %}
 
 {% endblock %}

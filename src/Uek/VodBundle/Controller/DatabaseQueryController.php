@@ -23,8 +23,9 @@ $query = $this->getDoctrine()->getManager()->createQuery('
             SELECT u, o, f FROM UekVodBundle:Orders o
             JOIN o.films f
             JOIN o.users u
+            JOIN o.orderStatus os
             WHERE u.username = :username
-            ORDER BY o.date ASC'
+            ORDER BY os.name ASC, o.date ASC'
         )->setParameter('username', $logUsrName);
  
     $orders = $query->getResult();

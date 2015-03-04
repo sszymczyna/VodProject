@@ -88,7 +88,7 @@ class DefaultController extends Controller
             ORDER BY r.create_date DESC');
          $query->setParameter('id', $id);
          $review = $query->getResult();        
-         echo $s;
+
          
                $em = $this->getDoctrine()->getManager();
 
