@@ -1,31 +1,33 @@
+#strona główna
 uek_vod_homepage:
     path:     /
     defaults: { _controller: UekVodBundle:Default:index }
-
+        
+#pokazywanie zamówień dla użytkownika
 uek_vod_show_orders:
     path:     /show
     defaults: { _controller: UekVodBundle:DatabaseQuery:show }
-    
+#wyświetlanie konkretnego gatunku i listy filmów z nim związanych  
 film_genre:
     path:     /gatunek/{genre}
     defaults: { _controller: UekVodBundle:Default:genres }
-    
+#wyswietlenie opisu danego filmu
 film_name:
     path:     /movie/{id}
-    defaults: { _controller: UekVodBundle:Default:names, s: 's' }
-    
+    defaults: { _controller: UekVodBundle:Default:names, s: 0 }
+#strona z mozliwoscia dodania recenzji    
 add_review:
     path:     /movie/{id}/review
     defaults: { _controller: UekVodBundle:Review:add }
-
+#wyswietlanie opisu danego filmu z infomracja ze recenzja zostala dodana
 task_success:
     path:     /movie/{id}/s
     defaults: { _controller: UekVodBundle:Default:names, s: 1 }
-    
+#wyswietlenie zawartosci koszyka    
 vod_cart:
     path:     /cart
     defaults: { _controller: UekVodBundle:Cart:show}
-
+#przekierowanie do strony platnosci
 vod_pay:
     path:     /pay
     defaults: { _controller: UekVodBundle:Pay:pay}

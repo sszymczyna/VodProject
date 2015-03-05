@@ -7,12 +7,17 @@ use Symfony\Component\Security\Core\SecurityContext;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 /**
- * Description of SecurityController
+ * Klasa obslugujaca system platnosci
  *
  * @author Sebastian Szymczyna
  */
 class PayController extends Controller{
-    
+    /**
+     * funkcja wymaga zalogowania. Pobiera dane z sesji oraz wysyla jest na strone
+     * platnosci gdzie taka sie dokonuje
+     * @return RedirectResponse
+     * @throws AccessDeniedException
+     */
     public function payAction()
     {
         
@@ -23,10 +28,6 @@ class PayController extends Controller{
     $session = $this->getRequest()->getSession();
     $price=$session->get('price');
     $mail=$this->get('security.context')->getToken()->getUser()->getEmail();
-    
-   // $em = $this->getDoctrine()->getManager();
-   //             $user = $em->getRepository('UekVodBundle:Users')->findByUsername($logUsrName);
-    //            $film = $em->getRepository('UekVodBundle:Films')->find($id);
                 
                 
 		$data = [
@@ -34,7 +35,7 @@ class PayController extends Controller{
 			'kwota' => $price,
 			'waluta' => 'PLN',
 			'opis' => 'Zapłata za wypożyczenia',
-			'URLC' => 'http://v-ie.uek.krakow.pl',
+			'URLC' => 'http://v-ie.uek.krakow.pl/~s178428/app.dev',
 			'email' => $mail
 		];
 		$params = http_build_query($data);

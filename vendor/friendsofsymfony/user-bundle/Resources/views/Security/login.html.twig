@@ -7,31 +7,36 @@
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
 
-  
+ 
 <form action="{{ path("fos_user_security_check") }}" method="post">
     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-{#  <span class="input-group-addon" id="sizing-addon1"<label for="username">{{ 'security.login.username'|trans }}</label></span>
-    <input type="text" class="form-control" id="username" name="_username" aria-describedby="sizing-addon1" value="{{ last_username }}" required="required" />
-#}
-<div class="row">    
-<div class="col-md-6">
-<div class="input-group input-group-lg">
-  <span class="input-group-addon" id="sizing-addon1">Login</span>
-  <input type="text" class="form-control" id="username" name="_username" placeholder="Wpisz nazwę użytkownika" value="{{ last_username }}" aria-describedby="sizing-addon1" required="required">
-</div>
-
-<div class="input-group input-group-lg">
-    <span class="input-group-addon" id="sizing-addon1">Hasło</span>
-    <input type="password" class="form-control" id="password" name="_password" placeholder="Wpisz swoje hasło" aria-describedby="sizing-addon1" required="required" />
-</div>
-</div>
-</div>
-{#    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
-#}<br>
-    <input type="submit" class="btn btn-primary btn-lg" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+        <div class="row">    
+            <div class="col-md-6">
+                <div class="input-group input-group-lg">
+                      <span class="input-group-addon" id="sizing-addon1">Login</span>
+                      <input type="text" class="form-control" 
+                             id="username" name="_username" 
+                             placeholder="Wpisz nazwę użytkownika" 
+                             value="{{ last_username }}" 
+                             aria-describedby="sizing-addon1" 
+                             equired="required">
+                </div><br>
+                
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon" id="sizing-addon1">Hasło</span>
+                    <input type="password" class="form-control" 
+                           id="password" 
+                           name="_password" 
+                           placeholder="Wpisz swoje hasło" 
+                           aria-describedby="sizing-addon1" 
+                           required="required" />
+                </div>
+            </div>
+        </div><br>
+    <input type="submit" class="btn btn-primary btn-lg" id="_submit" name="_submit" value="Zaloguj" />
 </form>
-    <h3>Jeżeli nie masz konta to wciśnij przycisk, aby się zarejestrować</h3>
-     <a class="btn btn-primary btn-lg" href="{{path('fos_user_registration_register')}}" role="button">Rejestracja</a>
+                             
+<h3>Jeżeli nie masz konta to wciśnij przycisk, aby się zarejestrować</h3>
+    <a class="btn btn-primary btn-lg" href="{{path('fos_user_registration_register')}}" role="button">Rejestracja</a>
 <input type="hidden" name="_target_path" value="/cart" />
 {% endblock fos_user_content %}

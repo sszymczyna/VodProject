@@ -1,19 +1,20 @@
 {% block ReviewFilms %}
-	<h2>Najwięcej recenzji:</h2>
-            {% if review %}
-               {% for film in review %}
-               {% if(loop.index < 4) %}     
-                <a href="{{path('film_name',{'id': film.id})}}" class="list-group-item">
-            <span class="badge">{{film.num}}</span>
-             {{film.name}}
-            </a>
+    <h2>Najwięcej recenzji:</h2>
+        {% if review %}
+            {% for film in review %}
+                {# nie wiecej niz 4 filmy na stronie #}
+                {% if(loop.index < 4) %}
+                    <a href="{{path('film_name',{'id': film.id})}}" class="list-group-item">
+                        <span class="badge">{{film.num}}</span>
+                        {{film.name}}
+                    </a>
                 {% endif %}
-         {% endfor %}
+            {% endfor %}
         {% else %}
+            
+            {# jezeli nie bedzie zadnych filmow, ktore maja recenzje #}
+            <dev class="list-group-item"> brak
+            <span class="badge">0</span> </dev>
  
-                    <dev class="list-group-item"> brak
-                    <span class="badge">0</span> </dev>
- 
-            {% endif %}
-	
+        {% endif %}
 {% endblock %}

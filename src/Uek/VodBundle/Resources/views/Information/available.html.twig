@@ -6,16 +6,17 @@
                 {% for film in available %}
                     <div class="col-md-4">
                         <a href="{{path('film_name',{'id': film.id})}}" class="list-group-item">{{film.name}}
+                            {# pobieranie okladek z katalgu gdzie sie znajduja #}
                             <img src="{{asset('bundles/uekvod/images/'~ film.name ~'.jpg')}}" class="img-thumbnail">
                         </a>
                     </div>        
       
                 {% endfor %}
             {% else %}
+                {# jezeli nie ma zadnego dostepnego filmu #}
                 <div class="col-md-3">
                     <dev class="list-group-item">
-                    brak filmów
-
+                        brak filmów
                     </dev>
                 </div> 
             {% endif %}

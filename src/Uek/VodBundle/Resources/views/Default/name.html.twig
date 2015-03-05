@@ -1,70 +1,91 @@
 {% extends "UekVodBundle::information.html.twig" %}
 
+{% block content %}
+    {# jezeli jestesmy przekierowani ze strony z dodana recenzja #}
+    {% if s == 1 %}
+        <h3>
+            <p class="text-center">
+                <span class="label label-default">
+                    Twoja recenzja została dodana!
+                </span>
+            </p>
+        </h3>
 
-  {% block content %}
-{% if s == 1 %}
+    {% endif %}
 
-<h3><p class="text-center"><span class="label label-default">Twoja recenzja została dodana!</span></p></h3>
-
-{% endif %}
-	<h2>Wybrany film:</h2>
-               
-        {#% for film in name %#}
+    <h2>Wybrany film:</h2>
+    
+    <h3>{{name.name}}</h3><br>
             
-            <h3>{{name.name}}</h3><br>
-
-
-                    <p>
-
-                        <form class="form-horizontal" method="POST">
-
-                    {{ form_start(formReview) }}
-                            <input type="submit" value="Wypożycz" onclick="onclickHandler();" class="btn btn-success btn-lg" />          
-    <script type="text/javascript">
-
-    function onclickHandler()
-
-    {
-
-      alert('Film został dodany do koszyka!');
-
-    }
-
-    </script>
-
-                {% if is_granted('ROLE_USER') %}
-            
-                    <a class="btn btn-primary btn-lg" 
-                       href="{{path('add_review',{'id': name.id})}}" 
-                       role="button">Dodaj recenzję
-                    </a>
-                {% endif %}
-                    {{ form_end(formReview) }}                    </p>
-
-
+   
+    
+    {# czy film zostal juz wypozyczony #}
+    {% if orders %}
+        
+        <button type="button" class="btn btn-danger btn-lg">Oglądaj</button>
+    
+    {% else %}
+        
+        <form class="form-horizontal" method="POST">
+            {{ form_start(formRent) }}
+                <input type="submit" value="Wypożycz" onclick="onclickHandler();" class="btn btn-success btn-lg" />          
+  
+                <script type="text/javascript">
+                
+                  function onclickHandler(){
+                     alert('Film został dodany do koszyka!');
+                  }
+               </script>
+   
+     {% endif %}
+    
+         {# jezeli uzytkownik jest zalogowany to widac przycisk "dodaj recenzje #}
+    {% if is_granted('ROLE_USER') %}
+        
+        <a class="btn btn-primary btn-lg" 
+            href="{{path('add_review',{'id': name.id})}}" 
+            role="button">Dodaj recenzję
+        </a>
+    
+    {% endif %}                   
+             {{ form_end(formRent) }}
+   
 	</form>
 
-                    <h3><strong>Cena:</strong> {{name.price}} zł</h3> 
-                            
-<div class="media">
-  <div class="media-left media-top">
-      <img class="media-object" width="270" src="{{asset('bundles/uekvod/images/'~ name.name ~'.jpg')}}" alt="...">
-  </div>
-  <div class="media-body">
-{{name.description}}
-          <h3>Aktorzy: {{name.actor1}}, {{name.actor2}}</h3>
-  </div>
-</div>
+    <h3>
+        <strong>
+            Cena:
+        </strong>         
+        {{name.price}} zł
+    </h3> 
+    
+    {# wyswietlanie okladki filmu #}
+    <div class="media">
+        <div class="media-left media-top">
+            <img class="media-object" width="270" src="{{asset('bundles/uekvod/images/'~ name.name ~'.jpg')}}" alt="...">
+        </div>
+  
+        {# wyswietlanie opisu filmu #}
+        <div class="media-body">
+            {{name.description}}
+            {# wyswietlanie aktorow grajacych w filmie #}
+            <h3>Aktorzy: {{name.actor1}}, {{name.actor2}}</h3>
+        </div>
+    </div>
 
-         {#% endfor %#}
-         {% if s != 1 %}
+    {# wyswietlanie recenzji pod filmem w przypadku braku dodania nowej #}
+    {% if s != 1 %}
 	<h2>Recenzje:</h2>
-         {% for reviews in review %}
-            <blockquote>
-                <p>{{reviews.description}}</p>
-                <footer>{{reviews.users.username}} <cite title="Source Title">: {{reviews.getCreateDate()|date('d/m/y H:i', false)}}</cite></footer>
-            </blockquote>
+            {% for reviews in review %}
+                <blockquote>
+                    <p>{{reviews.description}}</p>
+                    <footer>{{reviews.users.username}} 
+                        <cite title="Source Title">
+                            : {{reviews.getCreateDate()|date('d/m/y H:i', false)}}
+                        </cite>
+                    </footer>
+                </blockquote>
 
-         {% endfor %}
+            {% endfor %}
 	{%endif%}
 {% endblock %}

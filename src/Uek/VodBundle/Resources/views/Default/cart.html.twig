@@ -1,28 +1,32 @@
 {% extends "UekVodBundle::information.html.twig" %}
 
-  
-  {% block content %}
+{% block content %}
+    
+    <h2>Twój koszyk: </h2>  
+    
+    {# jezeli istnieja jakies zamowienia #}
+    {% if name %}
+        <form class="form-horizontal" method="POST">
 
-{% if name %}
-                            <form class="form-horizontal" method="POST">
-                                <h2>Twój koszyk: </h2>  <a class="btn btn-success btn-xl"  href="{{path('vod_pay')}}" role="button">wypożycz</a><br>
-<h4>Łącznie do zapłaty: {{price}} zł  </h4>
-{% endif %}
-
-                                
+            <a class="btn btn-success btn-xl"  href="{{path('vod_pay')}}" role="button">
+                wypożycz
+            </a><br>
             
-                    {{ form_start(formReview) }}
-                            <input type="submit" value="usuń" class="btn btn-danger btn-xl" />
-                            {{ form_end(formReview) }} 
-        {% for film in name %}
-<h4>
-
-      <b>{{film}}</b> </h3>
-
- 
-
-                                                            </form>
+        <h4>Łącznie do zapłaty: {{price}} zł  </h4>
+        
+        {{ form_start(formReview) }}
+            <input type="submit" value="usuń" class="btn btn-danger btn-xl" />
+        {{ form_end(formReview) }}
+    {% endif %}
+                         
+    {% for film in name %}
+        <h3>
+          <b>
+              {{film}}
+          </b> 
+        </h3>
+        </form>
                                 
-	{% endfor %}
+    {% endfor %}
 
 {% endblock %}

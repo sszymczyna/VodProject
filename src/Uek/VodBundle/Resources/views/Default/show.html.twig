@@ -1,33 +1,33 @@
 {% extends "UekVodBundle::information.html.twig" %}
 
-
-
 {% block content %}
- <html>
-     <head>
-        {# <title>{% block title %}Default title{% endblock %}</title>#}
-     </head>
-     <body>
+<html>
+    <body>
 
-     <h1>Lista zamówień:</h1>
-     <ul>
-         {% for order in orders %}
-         <li>{%if order.orderStatus.name == "w trakcie"%}
-             <a type="button" href="{{path('vod_pay')}}" class="btn btn-warning btn-xs" >{{order.orderStatus.name}}</a>
-        {% endif %}
-             {%if order.orderStatus.name == "zapłacone"%}
-             <button type="button" class="btn btn-success btn-xs " disabled="disabled">{{order.orderStatus.name}}</button>
-        {% endif %}
-             {{order.date|date('d/m/y H:i', false)}}
-             <b>           {{order.films.name}}
-             </b>
-             </a>   
-         </li><br>
-         {% endfor %}
-     </ul>
+    <h1>Lista zamówień:</h1>
+    <ul>
+        {% for order in orders %}
+            <li>
+                {# wyświetlanie przycisku ze względu na status #}
+                {%if order.orderStatus.name == "w trakcie"%}
+                    <a type="button" href="{#{path('vod_pay')}#}" class="btn btn-warning btn-xs" >{{order.orderStatus.name}}</a>
+                {% endif %}
+             
+                {%if order.orderStatus.name == "zapłacone"%}
+                    <button type="button" class="btn btn-success btn-xs " disabled="disabled">{{order.orderStatus.name}}</button>
+                    <a type="button" href="{{path('film_name',{'id': order.films.id})}}" class="btn btn-danger btn-xs " >oglądaj</a>   
+                 {% endif %}            
+                {{order.date|date('d/m/y H:i', false)}}
+                
+                <b>
+                    {{order.films.name}}
+                </b>
+                
 
-     </body>
- </html>
- 
- 
+            </li>
+            <br>
+        {% endfor %}
+    </ul>
+</body>
+</html> 
  {% endblock %}
